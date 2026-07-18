@@ -1,0 +1,68 @@
+---
+import { sitePath } from '../utils/site-path';
+
+const pathname = Astro.url.pathname;
+const homePath = sitePath();
+const aboutPath = sitePath('about/');
+const blogsPath = sitePath('blogs/');
+const concatPath = sitePath('concat/');
+const logoPath = sitePath('brand/phyai-logo-light.png');
+const onHome = pathname === homePath || pathname === homePath.replace(/\/$/, '');
+const onAbout = pathname.startsWith(aboutPath);
+const onBlogs = pathname.startsWith(blogsPath);
+const onConcat = pathname.startsWith(concatPath);
+---
+
+<header class="site-header" data-site-header>
+	<div class="header-inner page-shell">
+		<a class="wordmark" href={homePath} aria-label="PhyAI home" data-header-wordmark>
+			<img src={logoPath} alt="PhyAI" width="970" height="412" />
+		</a>
+
+		<nav class="desktop-nav" aria-label="Primary navigation">
+			<a href={homePath} aria-current={onHome ? 'page' : undefined}>Home</a>
+			<a href={aboutPath} aria-current={onAbout ? 'page' : undefined}>About</a>
+			<a href={blogsPath} aria-current={onBlogs ? 'page' : undefined}>Blog</a>
+			<a href={concatPath} aria-current={onConcat ? 'page' : undefined}>Concat</a>
+		</nav>
+
+		<div class="header-actions">
+			<a
+				class="header-action-link"
+				href="https://phyai.mintlify.app/"
+				target="_blank"
+				rel="noreferrer"
+			>
+				<span>Documentation</span>
+				<span aria-hidden="true">&#8599;</span>
+			</a>
+			<a
+				class="header-action-link"
+				href="https://github.com/MEmbodied/phyai"
+				target="_blank"
+				rel="noreferrer"
+			>
+				<span>GitHub</span>
+				<span aria-hidden="true">&#8599;</span>
+			</a>
+		</div>
+
+		<details class="mobile-nav">
+			<summary aria-label="Open navigation" title="Open navigation">
+				<span class="menu-lines" aria-hidden="true"><i></i><i></i></span>
+			</summary>
+			<nav aria-label="Mobile navigation">
+				<a href={homePath} aria-current={onHome ? 'page' : undefined}>Home</a>
+				<a href={aboutPath} aria-current={onAbout ? 'page' : undefined}>About</a>
+				<a href={blogsPath} aria-current={onBlogs ? 'page' : undefined}>Blog</a>
+				<a href={concatPath} aria-current={onConcat ? 'page' : undefined}>Concat</a>
+				<a href="https://phyai.mintlify.app/" target="_blank" rel="noreferrer">
+					Documentation <span aria-hidden="true">&#8599;</span>
+				</a>
+				<a href="https://github.com/MEmbodied/phyai" target="_blank" rel="noreferrer">
+					GitHub <span aria-hidden="true">&#8599;</span>
+				</a>
+			</nav>
+		</details>
+	</div>
+</header>

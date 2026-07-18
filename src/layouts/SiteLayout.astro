@@ -1,0 +1,131 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { sitePath } from '../utils/site-path';
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description: string;
+	bodyClass?: string;
+}
+
+const { title, description, bodyClass = '' } = Astro.props;
+const brandIcon = sitePath('brand/phyai-icon.png');
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#f2f3f1" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:image" content={brandIcon} />
+		<link rel="icon" type="image/png" href={brandIcon} />
+		<title>{title}</title>
+		<script is:inline>
+			document.documentElement.classList.add('js');
+		</script>
+	</head>
+	<body class={bodyClass}>
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<Header />
+		<main id="main-content">
+			<slot />
+		</main>
+		<Footer />
+
+		<script is:inline>
+			const header = document.querySelector('[data-site-header]');
+			const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
+			updateHeader();
+			window.addEventListener('scroll', updateHeader, { passive: true });
+
+			const heroWordmark = document.querySelector('[data-hero-wordmark]');
+			if (header && heroWordmark) {
+				if ('IntersectionObserver' in window) {
+					const wordmarkObserver = new IntersectionObserver(([entry]) => {
+						const heroWordmarkIsFullyVisible = entry.isIntersecting && entry.intersectionRatio >= 0.999;
+						header.classList.toggle('show-wordmark', !heroWordmarkIsFullyVisible);
+					}, { threshold: [0, 0.999, 1] });
+					wordmarkObserver.observe(heroWordmark);
+				} else {
+					header.classList.add('show-wordmark');
+				}
+			}
+
+			const tocLinks = Array.from(document.querySelectorAll('[data-toc-link]'));
+			const tocHeadings = tocLinks
+				.map((link) => document.getElementById(link.dataset.tocLink))
+				.filter(Boolean);
+			if (tocLinks.length && tocHeadings.length) {
+				const updateTableOfContents = () => {
+					const readingLine = (header?.offsetHeight ?? 0) + 96;
+					let currentHeading = tocHeadings[0];
+					tocHeadings.forEach((heading) => {
+						if (heading.getBoundingClientRect().top <= readingLine) currentHeading = heading;
+					});
+					tocLinks.forEach((link) => {
+						const isCurrent = link.dataset.tocLink === currentHeading.id;
+						link.classList.toggle('is-current', isCurrent);
+						if (isCurrent) link.setAttribute('aria-current', 'location');
+						else link.removeAttribute('aria-current');
+					});
+				};
+				updateTableOfContents();
+				window.addEventListener('scroll', updateTableOfContents, { passive: true });
+			}
+
+			const tableOfContents = document.querySelector('.essay-toc');
+			const wideContent = Array.from(document.querySelectorAll('[data-wide-content]'));
+			if (tableOfContents && wideContent.length) {
+				let wideContentUpdateQueued = false;
+				const updateWideContentOverlap = () => {
+					const tocRect = tableOfContents.getBoundingClientRect();
+					const overlapsToc = wideContent.some((element) => {
+						const contentRect = element.getBoundingClientRect();
+						return contentRect.top < tocRect.bottom
+							&& contentRect.bottom > tocRect.top
+							&& contentRect.left < tocRect.right
+							&& contentRect.right > tocRect.left;
+					});
+					tableOfContents.classList.toggle('is-obscured', overlapsToc);
+					wideContentUpdateQueued = false;
+				};
+				const scheduleWideContentUpdate = () => {
+					if (wideContentUpdateQueued) return;
+					wideContentUpdateQueued = true;
+					window.requestAnimationFrame(updateWideContentOverlap);
+				};
+				updateWideContentOverlap();
+				window.addEventListener('scroll', scheduleWideContentUpdate, { passive: true });
+				window.addEventListener('resize', scheduleWideContentUpdate);
+			}
+
+			const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			const reveals = document.querySelectorAll('.reveal');
+			if (reducedMotion || !('IntersectionObserver' in window)) {
+				reveals.forEach((element) => element.classList.add('is-visible'));
+			} else {
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('is-visible');
+							observer.unobserve(entry.target);
+						}
+					});
+				}, { threshold: 0.01 });
+				reveals.forEach((element) => observer.observe(element));
+			}
+
+			document.querySelectorAll('.mobile-nav a').forEach((link) => {
+				link.addEventListener('click', () => link.closest('details')?.removeAttribute('open'));
+			});
+		</script>
+	</body>
+</html>

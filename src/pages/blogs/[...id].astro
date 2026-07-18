@@ -1,0 +1,94 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getCollection, render } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { sitePath } from '../../utils/site-path';
+
+interface Props {
+	post: CollectionEntry<'blogs'>;
+}
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blogs', ({ data }) => !data.draft);
+
+	return posts.map((post) => ({
+		params: { id: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const tableOfContents = headings.filter(({ depth }) => depth === 2 || depth === 3);
+const published = post.data.published.toISOString().slice(0, 10);
+const displayDate = new Intl.DateTimeFormat('en', {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric',
+	timeZone: 'UTC',
+}).format(post.data.published);
+---
+
+<SiteLayout
+	title={`${post.data.title} - PhyAI Blog`}
+	description={post.data.description}
+	bodyClass="essay-page"
+>
+	<article>
+		<header class="essay-header">
+			<div class="page-shell">
+				<a class="essay-back" href={sitePath('blogs/')}>
+					<span aria-hidden="true">&#8592;</span>
+					Back to blog
+				</a>
+
+				<div class="essay-heading reveal">
+					<p class="eyebrow">Essay</p>
+					<h1>{post.data.title}</h1>
+					<p class="essay-dek">{post.data.description}</p>
+					<div class="essay-meta">
+						<p>{post.data.author}</p>
+						<p><time datetime={published}>{displayDate}</time></p>
+						<p>{post.data.readTime}</p>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="essay-reading page-shell">
+			<aside class="essay-toc reveal" aria-label="Table of contents">
+				<p class="essay-sidebar-label">Contents</p>
+				<nav>
+					{
+						tableOfContents.map((heading, index) => (
+							<a
+								class:list={[
+									'essay-toc-link',
+									{ 'essay-toc-link-nested': heading.depth === 3, 'is-current': index === 0 },
+								]}
+								href={`#${heading.slug}`}
+								data-toc-link={heading.slug}
+							>
+								{heading.text}
+							</a>
+						))
+					}
+				</nav>
+			</aside>
+
+			<div class="essay-prose reveal">
+				<Content />
+			</div>
+
+		</div>
+
+		<footer class="essay-footer">
+			<div class="essay-footer-inner page-shell">
+				<p>PhyAI Blog</p>
+				<a class="text-link" href={sitePath('blogs/')}>
+					Back to blog <span aria-hidden="true">&#8594;</span>
+				</a>
+			</div>
+		</footer>
+	</article>
+</SiteLayout>

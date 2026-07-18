@@ -1,0 +1,65 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+---
+
+<SiteLayout
+	title="About - PhyAI"
+	description="About PhyAI, the latency-first serving engine for Physical AI."
+	bodyClass="info-page"
+>
+	<header class="info-hero">
+		<div class="page-shell info-hero-grid reveal">
+			<p class="eyebrow">About PhyAI</p>
+			<div>
+				<h1>Intelligence that meets the world.</h1>
+				<p>
+					PhyAI is a latency-first serving engine for policy and action models in interactive
+					physical systems.
+				</p>
+			</div>
+		</div>
+	</header>
+
+	<section class="info-section">
+		<div class="page-shell info-copy-grid reveal">
+			<p class="eyebrow">What we build</p>
+			<div class="info-copy">
+				<h2>Serving is part of the model.</h2>
+				<p>
+					For Physical AI, latency is not a dashboard metric added after deployment. It shapes
+					what a machine can perceive, decide, and safely do before the world changes again.
+				</p>
+				<p>
+					PhyAI turns that constraint into an engine architecture: model-specific execution,
+					predictable runtime paths, and hardware-aware performance from a single GPU outward.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="info-values" aria-labelledby="about-values-title">
+		<div class="page-shell">
+			<div class="info-section-heading reveal">
+				<p class="eyebrow">Our frame</p>
+				<h2 id="about-values-title">Fast enough to act. Clear enough to trust.</h2>
+			</div>
+			<div class="info-value-grid reveal">
+				<article>
+					<p>01</p>
+					<h3>Latency first</h3>
+					<p>Optimize the path that turns perception into action, not only aggregate throughput.</p>
+				</article>
+				<article>
+					<p>02</p>
+					<h3>Model aware</h3>
+					<p>Give every policy and world model an execution path that respects its real structure.</p>
+				</article>
+				<article>
+					<p>03</p>
+					<h3>Open by default</h3>
+					<p>Make the engine inspectable, extensible, and useful to the wider Physical AI community.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+</SiteLayout>

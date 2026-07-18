@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { sitePath } from '../../utils/site-path';
+
+const essays = (await getCollection('blogs', ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+);
+
+const formatDate = (date: Date) =>
+	new Intl.DateTimeFormat('en', {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+		timeZone: 'UTC',
+	}).format(date);
+---
+
+<SiteLayout
+	title="Blog - PhyAI"
+	description="Writing from PhyAI on physical intelligence, latency, systems, human judgment, and safety."
+	bodyClass="blogs-page"
+>
+	<header class="essays-masthead">
+		<div class="essays-heading page-shell reveal">
+			<p class="eyebrow">PhyAI writing</p>
+			<h1>Blog</h1>
+			<p>Long-form thinking on intelligence that has to act in the physical world.</p>
+		</div>
+	</header>
+
+	<section class="essays-list-section" aria-label="Blog posts">
+		<div class="essays-list page-shell reveal">
+			{
+				essays.map((essay) => (
+					<a class="essay-list-item" href={sitePath(`blogs/${essay.id}/`)}>
+						<div class="essay-list-meta">
+							<p>
+								<time datetime={essay.data.published.toISOString().slice(0, 10)}>
+									{formatDate(essay.data.published)}
+								</time>
+							</p>
+							<p>{essay.data.readTime}</p>
+						</div>
+						<div class="essay-list-copy">
+							<h2>{essay.data.title}</h2>
+							<p>{essay.data.description}</p>
+						</div>
+						<span class="essay-list-arrow" aria-hidden="true">&#8599;</span>
+					</a>
+				))
+			}
+		</div>
+	</section>
+</SiteLayout>

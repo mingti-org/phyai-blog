@@ -1,0 +1,68 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const paths = [
+	{
+		label: 'Source',
+		title: 'Build with PhyAI',
+		description: 'Read the engine, propose a change, or add a model execution path.',
+		href: 'https://github.com/MEmbodied/phyai',
+		cta: 'Open GitHub',
+	},
+	{
+		label: 'Issues',
+		title: 'Bring a real constraint',
+		description: 'Report a failure, share a performance trace, or describe a workload the engine should serve.',
+		href: 'https://github.com/MEmbodied/phyai/issues',
+		cta: 'View issues',
+	},
+	{
+		label: 'Docs',
+		title: 'Start from the interface',
+		description: 'Explore installation, supported models, runtime concepts, and development guides.',
+		href: 'https://phyai.mintlify.app/',
+		cta: 'Read documentation',
+	},
+];
+---
+
+<SiteLayout
+	title="Concat - PhyAI"
+	description="Connect with the PhyAI open-source project through code, issues, and documentation."
+	bodyClass="info-page concat-page"
+>
+	<header class="info-hero concat-hero">
+		<div class="page-shell info-hero-grid reveal">
+			<p class="eyebrow">Open collaboration</p>
+			<div>
+				<h1>Concat</h1>
+				<p>
+					Connect models, systems, measurements, and people. PhyAI grows where concrete physical
+					workloads meet open engineering.
+				</p>
+			</div>
+		</div>
+	</header>
+
+	<section class="concat-section" aria-label="Ways to contribute">
+		<div class="page-shell concat-list reveal">
+			{
+				paths.map((path, index) => (
+					<a href={path.href} class="concat-row" target="_blank" rel="noreferrer">
+						<div class="concat-index">
+							<p>{String(index + 1).padStart(2, '0')}</p>
+							<p>{path.label}</p>
+						</div>
+						<div class="concat-copy">
+							<h2>{path.title}</h2>
+							<p>{path.description}</p>
+						</div>
+						<p class="concat-cta">
+							{path.cta} <span aria-hidden="true">&#8599;</span>
+						</p>
+					</a>
+				))
+			}
+		</div>
+	</section>
+</SiteLayout>

@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" role="img" aria-labelledby="title desc">
+	<title id="title">Synchronous inference compared with real-time chunking</title>
+	<desc id="desc">In synchronous execution, inference creates a visible pause between action chunks. With real-time chunking, the next inference runs while the current chunk is still executing, hiding the latency and preserving continuous motion.</desc>
+	<defs>
+		<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+			<circle cx="1" cy="1" r="1" fill="#c8ccc7" opacity="0.45" />
+		</pattern>
+		<linearGradient id="rtcChunk" x1="0" x2="1">
+			<stop offset="0" stop-color="#0756c9" />
+			<stop offset="1" stop-color="#4384df" />
+		</linearGradient>
+		<linearGradient id="overlap" x1="0" x2="1">
+			<stop offset="0" stop-color="#d9ed69" stop-opacity="0.2" />
+			<stop offset="0.5" stop-color="#d9ed69" stop-opacity="0.85" />
+			<stop offset="1" stop-color="#d9ed69" stop-opacity="0.2" />
+		</linearGradient>
+		<filter id="shadow" x="-20%" y="-30%" width="140%" height="160%">
+			<feDropShadow dx="0" dy="4" stdDeviation="7" flood-color="#071d3f" flood-opacity="0.15" />
+		</filter>
+	</defs>
+
+	<style>
+		.label { font: 600 22px "Helvetica Neue", Arial, sans-serif; fill: #191c19; }
+		.kicker { font: 700 13px "Helvetica Neue", Arial, sans-serif; letter-spacing: 1.6px; fill: #555b54; }
+		.lane-title { font: 600 20px "Helvetica Neue", Arial, sans-serif; fill: #191c19; }
+		.small { font: 500 14px "SFMono-Regular", Consolas, monospace; fill: #555b54; }
+		.bar-text { font: 600 15px "Helvetica Neue", Arial, sans-serif; fill: #fff; }
+		.dark-text { font: 600 15px "Helvetica Neue", Arial, sans-serif; fill: #191c19; }
+		.annotation { font: 500 15px "Helvetica Neue", Arial, sans-serif; fill: #555b54; }
+		.wait-pulse { animation: wait-pulse 8s ease-in-out infinite; transform-origin: center; }
+		.inference-pulse { animation: inference-pulse 8s ease-in-out infinite; transform-origin: center; }
+		.playhead { animation: playhead 8s linear infinite; }
+		@keyframes wait-pulse {
+			0%, 35%, 58%, 100% { opacity: 0.55; }
+			42%, 52% { opacity: 1; }
+		}
+		@keyframes inference-pulse {
+			0%, 18%, 52%, 100% { opacity: 0.58; }
+			25%, 43% { opacity: 1; }
+		}
+		@keyframes playhead {
+			0% { transform: translateX(0); opacity: 0; }
+			4% { opacity: 1; }
+			96% { opacity: 1; }
+			100% { transform: translateX(860px); opacity: 0; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			.wait-pulse, .inference-pulse, .playhead { animation: none; }
+			.playhead { transform: translateX(430px); opacity: 0.7; }
+		}
+	</style>
+
+	<rect width="1200" height="660" rx="18" fill="#fff" />
+	<rect width="1200" height="660" rx="18" fill="url(#grid)" />
+
+	<text x="64" y="57" class="kicker">LATENCY AS A SYSTEMS CONSTRAINT</text>
+	<text x="64" y="92" class="label">The robot can think while it moves</text>
+
+	<line x1="270" y1="125" x2="1130" y2="125" stroke="#c8ccc7" />
+	<g class="small" text-anchor="middle">
+		<text x="270" y="116">t0</text>
+		<text x="485" y="116">t1</text>
+		<text x="700" y="116">t2</text>
+		<text x="915" y="116">t3</text>
+		<text x="1130" y="116">t4</text>
+	</g>
+
+	<text x="64" y="183" class="lane-title">Synchronous</text>
+	<text x="64" y="207" class="annotation">think, stop, then move again</text>
+	<rect x="270" y="160" width="330" height="66" rx="9" fill="#0756c9" />
+	<text x="435" y="199" class="bar-text" text-anchor="middle">execute chunk A</text>
+	<g class="wait-pulse">
+		<rect x="610" y="160" width="190" height="66" rx="9" fill="#f1c4bd" stroke="#b74636" stroke-width="2" stroke-dasharray="7 6" />
+		<text x="705" y="188" class="dark-text" text-anchor="middle">inference</text>
+		<text x="705" y="210" class="small" text-anchor="middle">robot waits</text>
+	</g>
+	<rect x="810" y="160" width="320" height="66" rx="9" fill="#0756c9" />
+	<text x="970" y="199" class="bar-text" text-anchor="middle">execute chunk B</text>
+	<path d="M610 244 V258 H800 V244" fill="none" stroke="#b74636" stroke-width="2" />
+	<text x="705" y="281" class="annotation" text-anchor="middle">latency becomes downtime</text>
+
+	<line x1="64" y1="320" x2="1136" y2="320" stroke="#c8ccc7" />
+
+	<text x="64" y="378" class="lane-title">Real-time chunking</text>
+	<text x="64" y="402" class="annotation">think and move concurrently</text>
+	<rect x="270" y="354" width="535" height="70" rx="9" fill="#dce8f8" stroke="#0756c9" stroke-width="2" />
+	<text x="410" y="395" class="dark-text" text-anchor="middle">execute chunk A</text>
+	<g class="inference-pulse" filter="url(#shadow)">
+		<rect x="520" y="444" width="285" height="54" rx="9" fill="#d9ed69" stroke="#789410" stroke-width="2" />
+		<text x="662" y="477" class="dark-text" text-anchor="middle">generate chunk B</text>
+	</g>
+	<rect x="740" y="354" width="390" height="70" rx="9" fill="url(#rtcChunk)" />
+	<text x="945" y="395" class="bar-text" text-anchor="middle">execute chunk B</text>
+	<rect x="740" y="344" width="65" height="90" rx="8" fill="url(#overlap)" />
+	<path d="M520 516 V530 H805 V516" fill="none" stroke="#789410" stroke-width="2" />
+	<text x="662" y="554" class="annotation" text-anchor="middle">latency is hidden inside the execution window</text>
+	<text x="772" y="335" class="small" text-anchor="middle">smooth handoff</text>
+
+	<g class="playhead">
+		<line x1="270" y1="140" x2="270" y2="500" stroke="#191c19" stroke-width="2" opacity="0.42" />
+		<circle cx="270" cy="193" r="8" fill="#fff" stroke="#191c19" stroke-width="3" />
+		<circle cx="270" cy="389" r="8" fill="#fff" stroke="#191c19" stroke-width="3" />
+	</g>
+
+	<rect x="64" y="588" width="1072" height="1" fill="#c8ccc7" />
+	<circle cx="80" cy="621" r="7" fill="#0756c9" />
+	<text x="98" y="626" class="small">action execution</text>
+	<circle cx="262" cy="621" r="7" fill="#d9ed69" stroke="#789410" />
+	<text x="280" y="626" class="small">model inference</text>
+	<text x="1136" y="626" class="small" text-anchor="end">schematic, not to scale</text>
+</svg>

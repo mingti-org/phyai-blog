@@ -1,0 +1,113 @@
+---
+import { getCollection } from 'astro:content';
+import SiteLayout from '../layouts/SiteLayout.astro';
+import { sitePath } from '../utils/site-path';
+
+const [latestEssay] = (await getCollection('blogs', ({ data }) => !data.draft)).sort(
+	(a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+);
+---
+
+<SiteLayout
+	title="PhyAI - Latency-first serving for Physical AI"
+	description="PhyAI is a latency-first serving engine for policy and action models in interactive physical systems."
+	bodyClass="home-page"
+>
+	<section class="product-hero" aria-labelledby="home-title">
+		<div class="page-shell product-hero-inner">
+			<div class="minimal-meta">
+				<p class="eyebrow">Open-source serving engine</p>
+				<p>Latency first / Physical AI</p>
+			</div>
+
+			<div class="product-hero-grid">
+				<div class="hero-intro reveal">
+					<h1 class="home-brand" id="home-title" data-hero-wordmark>
+						<img src={sitePath('brand/phyai-logo-light.png')} alt="PhyAI" width="970" height="412" />
+					</h1>
+					<p class="minimal-tagline">Latency-first serving for Physical AI.</p>
+					<p class="minimal-description">
+						Run policy and action models where response time is part of correctness.
+					</p>
+					<div class="hero-actions">
+						<a
+							class="primary-link"
+							href="https://phyai.mintlify.app/"
+							target="_blank"
+							rel="noreferrer"
+						>
+							Documentation <span aria-hidden="true">&#8599;</span>
+						</a>
+						<a class="text-link" href={sitePath('blogs/')}>
+							Read the blog <span aria-hidden="true">&#8594;</span>
+						</a>
+					</div>
+				</div>
+
+				<aside class="code-console reveal" aria-label="pi0.5 quick start">
+					<div class="console-header">
+						<p>pi0.5 / single GPU</p>
+						<p>Python</p>
+					</div>
+					<pre class="console-code"><code>from phyai import Engine, EngineArgs
+from phyai.models.pi05.main_pi05 import PI05Args
+
+engine = Engine(EngineArgs(
+    plugin="pi05",
+    plugin_args=PI05Args(
+        checkpoint_dir="lerobot/pi05_base",
+    ),
+))
+actions = engine.step(request)
+engine.close()</code></pre>
+					<div class="console-install">
+						<p>Nightly build</p>
+						<pre><code>uv pip install phyai phyai-ext \
+  --extra-index-url https://membodied.github.io/phyai/simple/ \
+  --prerelease=allow</code></pre>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</section>
+
+	<section class="minimal-principles section-pad" id="premise" aria-labelledby="principles-title">
+		<div class="page-shell">
+			<div class="minimal-section-heading">
+				<p class="eyebrow">The premise</p>
+				<h2 id="principles-title">Built for the world as it is.</h2>
+			</div>
+
+			<div class="minimal-card-grid">
+				<article class="minimal-card">
+					<h3>Physical</h3>
+					<p>Algorithms that meet real conditions, not just clean datasets.</p>
+				</article>
+				<article class="minimal-card">
+					<h3>Human</h3>
+					<p>Systems that keep judgment, agency, and care in the loop.</p>
+				</article>
+				<article class="minimal-card">
+					<h3>Safe by design</h3>
+					<p>Fast at the edge, expansive in the cloud, accountable everywhere.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	{
+		latestEssay && (
+			<section class="minimal-journal" id="journal" aria-labelledby="journal-title">
+				<div class="page-shell minimal-journal-inner">
+					<div>
+						<p class="eyebrow">Latest post</p>
+						<h2 id="journal-title">{latestEssay.data.title}</h2>
+					</div>
+					<a class="text-link" href={sitePath(`blogs/${latestEssay.id}/`)}>
+						Read the post <span aria-hidden="true">&#8594;</span>
+					</a>
+				</div>
+			</section>
+		)
+	}
+</SiteLayout>

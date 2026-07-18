@@ -1,0 +1,38 @@
+---
+import { sitePath } from '../utils/site-path';
+
+const homePath = sitePath();
+const logoPath = sitePath('brand/phyai-logo-dark.png');
+---
+
+<footer class="site-footer">
+	<div class="page-shell footer-grid">
+		<div class="footer-statement">
+			<a class="footer-wordmark" href={homePath} aria-label="PhyAI home">
+				<img src={logoPath} alt="PhyAI" width="970" height="412" loading="lazy" />
+			</a>
+			<p>Intelligence with a physical address.</p>
+		</div>
+
+		<div class="footer-column">
+			<p class="footer-label">Navigate</p>
+			<a href={homePath}>Home</a>
+			<a href={sitePath('about/')}>About</a>
+			<a href={sitePath('blogs/')}>Blog</a>
+			<a href={sitePath('concat/')}>Concat</a>
+			<a href="https://phyai.mintlify.app/" target="_blank" rel="noreferrer">Documentation</a>
+		</div>
+
+		<div class="footer-column">
+			<p class="footer-label">Principles</p>
+			<span>For human</span>
+			<span>For safety</span>
+			<span>For the physical world</span>
+		</div>
+	</div>
+
+	<div class="page-shell footer-base">
+		<p>&copy; 2026 PhyAI</p>
+		<p>Latency-first serving for Physical AI.</p>
+	</div>
+</footer>

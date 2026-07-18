@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+	<title id="title">PhyAI architecture</title>
+	<desc id="desc">PhyAI connects model-specific execution paths for policy, vision-language-action, and world action models to a shared latency-first engine. The engine coordinates payloads, model execution, scheduling, CUDA graphs, parallel execution, virtual GPUs, weights, and optimized kernels, then deploys to edge robots or cloud reinforcement-learning rollouts.</desc>
+	<defs>
+		<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+			<circle cx="1" cy="1" r="1" fill="#c8ccc7" opacity="0.42" />
+		</pattern>
+		<linearGradient id="engine" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0" stop-color="#071d3f" />
+			<stop offset="1" stop-color="#0756c9" />
+		</linearGradient>
+		<linearGradient id="path" x1="0" x2="1">
+			<stop offset="0" stop-color="#0756c9" />
+			<stop offset="1" stop-color="#d9ed69" />
+		</linearGradient>
+		<filter id="shadow" x="-20%" y="-30%" width="140%" height="170%">
+			<feDropShadow dx="0" dy="7" stdDeviation="10" flood-color="#071d3f" flood-opacity="0.13" />
+		</filter>
+		<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+			<path d="M1 1 L9 5 L1 9" fill="none" stroke="#0756c9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+		</marker>
+	</defs>
+
+	<style>
+		.kicker { font: 700 13px "Helvetica Neue", Arial, sans-serif; letter-spacing: 1.7px; fill: #555b54; }
+		.heading { font: 600 26px "Helvetica Neue", Arial, sans-serif; fill: #191c19; }
+		.section { font: 700 13px "Helvetica Neue", Arial, sans-serif; letter-spacing: 1.4px; fill: #555b54; }
+		.node-title { font: 600 17px "Helvetica Neue", Arial, sans-serif; fill: #191c19; }
+		.node-copy { font: 500 13px "Helvetica Neue", Arial, sans-serif; fill: #555b54; }
+		.engine-title { font: 600 29px "Helvetica Neue", Arial, sans-serif; fill: #fff; }
+		.engine-copy { font: 500 14px "Helvetica Neue", Arial, sans-serif; fill: #dce8f8; }
+		.module-title { font: 600 14px "Helvetica Neue", Arial, sans-serif; fill: #071d3f; }
+		.module-copy { font: 500 11px "SFMono-Regular", Consolas, monospace; fill: #555b54; }
+		.deploy-title { font: 600 19px "Helvetica Neue", Arial, sans-serif; fill: #191c19; }
+		.deploy-copy { font: 500 13px "Helvetica Neue", Arial, sans-serif; fill: #555b54; }
+		.flow { stroke-dasharray: 9 10; animation: flow 4s linear infinite; }
+		.pulse { animation: pulse 4s ease-in-out infinite; transform-origin: center; }
+		@keyframes flow { to { stroke-dashoffset: -38; } }
+		@keyframes pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+		@media (prefers-reduced-motion: reduce) { .flow, .pulse { animation: none; } }
+	</style>
+
+	<rect width="1200" height="820" rx="18" fill="#fff" />
+	<rect width="1200" height="820" rx="18" fill="url(#grid)" />
+
+	<text x="58" y="50" class="kicker">ONE ENGINE, DIFFERENT MODEL STRUCTURES</text>
+	<text x="58" y="84" class="heading">From research checkpoints to real-time physical systems</text>
+
+	<text x="58" y="132" class="section">MODEL-SPECIFIC EXECUTION PATHS</text>
+	<g filter="url(#shadow)">
+		<rect x="58" y="154" width="250" height="98" rx="12" fill="#fff" stroke="#c8ccc7" />
+		<rect x="333" y="154" width="250" height="98" rx="12" fill="#fff" stroke="#c8ccc7" />
+		<rect x="608" y="154" width="250" height="98" rx="12" fill="#fff" stroke="#c8ccc7" />
+		<rect x="883" y="154" width="250" height="98" rx="12" fill="#fff" stroke="#c8ccc7" />
+	</g>
+	<circle cx="84" cy="184" r="9" fill="#0756c9" />
+	<text x="104" y="190" class="node-title">π0 / π0.5</text>
+	<text x="84" y="218" class="node-copy">policy and action models</text>
+	<circle cx="359" cy="184" r="9" fill="#0756c9" />
+	<text x="379" y="190" class="node-title">GR00T</text>
+	<text x="359" y="218" class="node-copy">vision-language-action</text>
+	<circle cx="634" cy="184" r="9" fill="#0756c9" />
+	<text x="654" y="190" class="node-title">Cosmos3</text>
+	<text x="634" y="218" class="node-copy">policy and world generation</text>
+	<circle cx="909" cy="184" r="9" fill="#d9ed69" stroke="#789410" />
+	<text x="929" y="190" class="node-title">New architectures</text>
+	<text x="909" y="218" class="node-copy">extensible model plugins</text>
+
+	<path d="M183 252 V282 H596 V304" fill="none" stroke="#0756c9" stroke-width="2" />
+	<path d="M458 252 V282 H596" fill="none" stroke="#0756c9" stroke-width="2" />
+	<path d="M733 252 V282 H596" fill="none" stroke="#0756c9" stroke-width="2" />
+	<path d="M1008 252 V282 H596" fill="none" stroke="#0756c9" stroke-width="2" />
+	<path class="flow" d="M183 252 V282 H596 V304" fill="none" stroke="url(#path)" stroke-width="4" opacity="0.55" />
+
+	<g filter="url(#shadow)">
+		<rect x="58" y="304" width="1075" height="310" rx="18" fill="url(#engine)" />
+	</g>
+	<text x="92" y="350" class="engine-title">PhyAI latency-first engine</text>
+	<text x="92" y="378" class="engine-copy">A shared runtime that keeps model structure explicit while optimizing the execution path underneath.</text>
+
+	<g>
+		<rect x="92" y="414" width="230" height="76" rx="10" fill="#fff" />
+		<rect x="337" y="414" width="230" height="76" rx="10" fill="#fff" />
+		<rect x="582" y="414" width="230" height="76" rx="10" fill="#fff" />
+		<rect x="827" y="414" width="272" height="76" rx="10" fill="#fff" />
+		<text x="112" y="444" class="module-title">Typed payloads</text>
+		<text x="112" y="468" class="module-copy">vision · VLM · LLM · expert</text>
+		<text x="357" y="444" class="module-title">Model runner</text>
+		<text x="357" y="468" class="module-copy">model-specific forward path</text>
+		<text x="602" y="444" class="module-title">Runtime scheduling</text>
+		<text x="602" y="468" class="module-copy">predictable execution</text>
+		<text x="847" y="444" class="module-title">CUDA graph manager</text>
+		<text x="847" y="468" class="module-copy">capture · replay · lower overhead</text>
+	</g>
+
+	<path d="M322 452 H337 M567 452 H582 M812 452 H827" stroke="#0756c9" stroke-width="2" marker-end="url(#arrow)" />
+
+	<g>
+		<rect x="92" y="512" width="230" height="70" rx="10" fill="#dce8f8" stroke="#80a9df" />
+		<rect x="337" y="512" width="230" height="70" rx="10" fill="#dce8f8" stroke="#80a9df" />
+		<rect x="582" y="512" width="230" height="70" rx="10" fill="#dce8f8" stroke="#80a9df" />
+		<rect x="827" y="512" width="272" height="70" rx="10" fill="#eaf4ae" stroke="#a7bd3c" />
+		<text x="112" y="542" class="module-title">Parallel execution</text>
+		<text x="112" y="565" class="module-copy">device mesh · dispatch</text>
+		<text x="357" y="542" class="module-title">Virtual GPU</text>
+		<text x="357" y="565" class="module-copy">partition · topology</text>
+		<text x="602" y="542" class="module-title">Weights and cache</text>
+		<text x="602" y="565" class="module-copy">loading · reuse · state</text>
+		<text x="847" y="542" class="module-title">Optimized kernels</text>
+		<text x="847" y="565" class="module-copy">CUDA · Triton · JIT · CPU</text>
+	</g>
+
+	<path d="M596 614 V646" fill="none" stroke="#0756c9" stroke-width="2.5" marker-end="url(#arrow)" />
+	<text x="58" y="682" class="section">DEPLOY THE SAME EXECUTION PATH</text>
+
+	<g filter="url(#shadow)">
+		<rect x="58" y="704" width="500" height="82" rx="13" fill="#fff" stroke="#c8ccc7" />
+		<rect x="633" y="704" width="500" height="82" rx="13" fill="#fff" stroke="#c8ccc7" />
+	</g>
+	<g class="pulse">
+		<circle cx="92" cy="745" r="13" fill="#0756c9" />
+		<circle cx="667" cy="745" r="13" fill="#d9ed69" stroke="#789410" />
+	</g>
+	<text x="120" y="741" class="deploy-title">Edge deployment</text>
+	<text x="120" y="765" class="deploy-copy">low latency · predictable action serving · robots</text>
+	<text x="695" y="741" class="deploy-title">Cloud-scale rollouts</text>
+	<text x="695" y="765" class="deploy-copy">high throughput · parallel sampling · reinforcement learning</text>
+	<path d="M596 646 H308 V704" fill="none" stroke="#0756c9" stroke-width="2" marker-end="url(#arrow)" />
+	<path d="M596 646 H883 V704" fill="none" stroke="#0756c9" stroke-width="2" marker-end="url(#arrow)" />
+</svg>
