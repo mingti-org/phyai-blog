@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 390" role="img" aria-labelledby="title desc">
+	<title id="title">Cosmos3 Nano Policy end-to-end action latency</title>
+	<desc id="desc">A stacked horizontal bar chart showing batch-size-one latency for a 32-action chunk. PhyAI takes 1.132 seconds on a Hopper-series GPU and 8.121 seconds on NVIDIA Thor. Each bar separates VAE encoding, conditioning, and generation.</desc>
+	<style>
+		.title { font: 600 16px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.subtitle { font: 500 10px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.axis { font: 500 11px "SFMono-Regular", Consolas, monospace; fill: #555b54; letter-spacing: 0; }
+		.hardware { font: 600 14px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.throughput { font: 600 10px "SFMono-Regular", Consolas, monospace; fill: #0756c9; letter-spacing: 0; }
+		.value { font: 700 12px "SFMono-Regular", Consolas, monospace; fill: #191c19; letter-spacing: 0; }
+		.legend { font: 500 11px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+	</style>
+
+	<rect width="600" height="390" fill="#fff" />
+	<text x="70" y="34" class="title">Cosmos3 Nano Policy action latency</text>
+	<text x="70" y="56" class="subtitle">Batch size 1 · BF16 · single GPU · lower is better</text>
+
+	<g aria-label="Phase legend">
+		<rect x="180" y="77" width="13" height="13" fill="#d9ed69" stroke="#a7bd3c" />
+		<text x="201" y="88" class="legend">VAE encode</text>
+		<rect x="298" y="77" width="13" height="13" fill="#80a9df" />
+		<text x="319" y="88" class="legend">Conditioning</text>
+		<rect x="421" y="77" width="13" height="13" fill="#0756c9" />
+		<text x="442" y="88" class="legend">Generation</text>
+	</g>
+
+	<g stroke="#dde0dc" stroke-width="1">
+		<path d="M125 110 V296" stroke="#8e948d" />
+		<path d="M172.8 110 V296" />
+		<path d="M220.6 110 V296" />
+		<path d="M268.3 110 V296" />
+		<path d="M316.1 110 V296" />
+		<path d="M363.9 110 V296" />
+		<path d="M411.7 110 V296" />
+		<path d="M459.4 110 V296" />
+		<path d="M507.2 110 V296" />
+		<path d="M555 110 V296" />
+		<path d="M125 296 H555" stroke="#8e948d" />
+	</g>
+
+	<g aria-label="Hopper-series GPU: total latency 1.132 seconds; VAE encode 0.213 seconds, conditioning 0.126 seconds, generation 0.793 seconds">
+		<text x="110" y="145" class="hardware" text-anchor="end"><tspan x="110">Hopper-series</tspan><tspan x="110" dy="15">GPU</tspan></text>
+		<text x="110" y="174" class="throughput" text-anchor="end">28.27 steps/s</text>
+		<rect x="125" y="132" width="10.2" height="44" fill="#d9ed69" stroke="#a7bd3c" />
+		<rect x="135.2" y="132" width="6" height="44" fill="#80a9df" />
+		<rect x="141.2" y="132" width="37.9" height="44" fill="#0756c9" />
+		<text x="187" y="160" class="value">1.132 s</text>
+	</g>
+
+	<g aria-label="Thor: total latency 8.121 seconds; VAE encode 1.689 seconds, conditioning 0.135 seconds, generation 6.298 seconds">
+		<text x="110" y="241" class="hardware" text-anchor="end">Thor</text>
+		<text x="110" y="260" class="throughput" text-anchor="end">3.94 steps/s</text>
+		<rect x="125" y="222" width="80.7" height="44" fill="#d9ed69" stroke="#a7bd3c" />
+		<rect x="205.7" y="222" width="6.5" height="44" fill="#80a9df" />
+		<rect x="212.2" y="222" width="300.8" height="44" fill="#0756c9" />
+		<text x="521" y="250" class="value">8.121 s</text>
+	</g>
+
+	<g class="axis" text-anchor="middle">
+		<text x="125" y="316">0</text>
+		<text x="172.8" y="316">1</text>
+		<text x="220.6" y="316">2</text>
+		<text x="268.3" y="316">3</text>
+		<text x="316.1" y="316">4</text>
+		<text x="363.9" y="316">5</text>
+		<text x="411.7" y="316">6</text>
+		<text x="459.4" y="316">7</text>
+		<text x="507.2" y="316">8</text>
+		<text x="555" y="316">9</text>
+	</g>
+	<text x="340" y="352" class="axis" text-anchor="middle">Latency per 32-action chunk (seconds)</text>
+</svg>

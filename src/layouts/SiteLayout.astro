@@ -93,8 +93,9 @@ const brandIcon = sitePath('brand/phyai-icon.png');
 							&& contentRect.bottom > tocRect.top
 							&& contentRect.left < tocRect.right
 							&& contentRect.right > tocRect.left;
-					});
+						});
 					tableOfContents.classList.toggle('is-obscured', overlapsToc);
+					tableOfContents.toggleAttribute('inert', overlapsToc);
 					wideContentUpdateQueued = false;
 				};
 				const scheduleWideContentUpdate = () => {

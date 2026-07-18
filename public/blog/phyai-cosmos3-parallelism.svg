@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 500" role="img" aria-labelledby="title desc">
+	<title id="title">Cosmos3 two-dimensional parallel execution</title>
+	<desc id="desc">An eight-GPU example with two classifier-free-guidance branches. Four tensor-parallel ranks execute the conditional branch and four execute the unconditional branch. The two video and action velocities are gathered, combined with classifier-free guidance, and advanced by separate UniPC solvers.</desc>
+	<defs>
+		<marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+			<path d="M0 0 L7 3.5 L0 7 Z" fill="#555b54" />
+		</marker>
+	</defs>
+	<style>
+		.title { font: 600 17px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.subtitle { font: 500 10px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.section { font: 600 11px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.label { font: 500 10px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.small { font: 500 9px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.mono { font: 600 9px "SFMono-Regular", Consolas, monospace; fill: #191c19; letter-spacing: 0; }
+		.white { fill: #fff; }
+		.flow { fill: none; stroke: #555b54; stroke-width: 1.2; marker-end: url(#arrow); }
+	</style>
+
+	<rect width="720" height="500" fill="#fff" />
+	<text x="40" y="30" class="title">Cosmos3 parallel execution</text>
+	<text x="40" y="50" class="subtitle">Example topology · CFG 2 × TP 4 = 8 GPUs · one policy denoising step</text>
+
+	<rect x="40" y="72" width="640" height="54" fill="#f7f8f6" stroke="#c9cdc8" />
+	<text x="58" y="94" class="section">Cached once per request and per CFG branch</text>
+	<text x="58" y="113" class="small">UND text K/V · GEN rotary positions · shared video/action state enters each denoising step</text>
+
+	<text x="40" y="165" class="section">Conditional branch</text>
+	<text x="40" y="183" class="small">cfg rank 0</text>
+	<text x="40" y="199" class="small">cached cond K/V</text>
+	<g aria-label="Conditional tensor-parallel group">
+		<rect x="180" y="148" width="58" height="42" fill="#0756c9" />
+		<rect x="248" y="148" width="58" height="42" fill="#0756c9" />
+		<rect x="316" y="148" width="58" height="42" fill="#0756c9" />
+		<rect x="384" y="148" width="58" height="42" fill="#0756c9" />
+		<text x="209" y="174" class="mono white" text-anchor="middle">TP 0</text>
+		<text x="277" y="174" class="mono white" text-anchor="middle">TP 1</text>
+		<text x="345" y="174" class="mono white" text-anchor="middle">TP 2</text>
+		<text x="413" y="174" class="mono white" text-anchor="middle">TP 3</text>
+		<text x="311" y="208" class="small" text-anchor="middle">QKV + MLP shards · local attention heads · TP all-reduce</text>
+	</g>
+
+	<text x="40" y="253" class="section">Unconditional branch</text>
+	<text x="40" y="271" class="small">cfg rank 1</text>
+	<text x="40" y="287" class="small">cached uncond K/V</text>
+	<g aria-label="Unconditional tensor-parallel group">
+		<rect x="180" y="236" width="58" height="42" fill="#9ca29b" />
+		<rect x="248" y="236" width="58" height="42" fill="#9ca29b" />
+		<rect x="316" y="236" width="58" height="42" fill="#9ca29b" />
+		<rect x="384" y="236" width="58" height="42" fill="#9ca29b" />
+		<text x="209" y="262" class="mono white" text-anchor="middle">TP 0</text>
+		<text x="277" y="262" class="mono white" text-anchor="middle">TP 1</text>
+		<text x="345" y="262" class="mono white" text-anchor="middle">TP 2</text>
+		<text x="413" y="262" class="mono white" text-anchor="middle">TP 3</text>
+		<text x="311" y="296" class="small" text-anchor="middle">QKV + MLP shards · local attention heads · TP all-reduce</text>
+	</g>
+
+	<rect x="530" y="151" width="150" height="128" fill="#eef4fb" stroke="#80a9df" />
+	<text x="605" y="178" class="section" text-anchor="middle">CFG-axis all-gather</text>
+	<text x="605" y="202" class="small" text-anchor="middle">matching TP ranks exchange</text>
+	<text x="605" y="222" class="mono" text-anchor="middle">video velocity</text>
+	<text x="605" y="240" class="mono" text-anchor="middle">action velocity</text>
+	<text x="605" y="261" class="small" text-anchor="middle">cond + uncond</text>
+	<path d="M442 169 H512 V188 H530" class="flow" />
+	<path d="M442 257 H512 V242 H530" class="flow" />
+
+	<rect x="126" y="336" width="468" height="58" fill="#f4f8dd" stroke="#a7bd3c" />
+	<text x="360" y="359" class="section" text-anchor="middle">Guidance combine on every rank</text>
+	<text x="360" y="380" class="mono" text-anchor="middle">velocity = uncond + scale × (cond − uncond)</text>
+	<path d="M605 279 V318 H360 V336" class="flow" />
+
+	<rect x="194" y="422" width="332" height="48" fill="#fff" stroke="#0756c9" stroke-width="1.4" />
+	<text x="360" y="443" class="section" text-anchor="middle">Two synchronized UniPC updates</text>
+	<text x="360" y="461" class="small" text-anchor="middle">rollout-video latent + 32-action chunk</text>
+	<path d="M360 394 V422" class="flow" />
+
+	<path d="M526 446 H700 V99 H680" class="flow" />
+	<text x="610" y="434" class="small" text-anchor="middle">next timestep</text>
+	<text x="40" y="492" class="small">Optional rollout decode: overlapping spatial VAE tiles across all cfg × tp ranks (excluded from the latency benchmark).</text>
+</svg>

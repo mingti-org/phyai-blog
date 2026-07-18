@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 590" role="img" aria-labelledby="title desc">
+	<title id="title">GR00T latency across inference frameworks and hardware</title>
+	<desc id="desc">Horizontal bars compare GR00T single-sample latency for the official repository, vla.cpp, FlashRT, and PhyAI on NVIDIA Thor, RTX 5090, and A40. PhyAI is 1.40, 2.28, and 4.31 times faster than the official implementation respectively.</desc>
+	<style>
+		.title { font: 600 16px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.subtitle { font: 500 10px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.hardware { font: 600 13px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.framework { font: 500 10px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.axis { font: 500 9px "SFMono-Regular", Consolas, monospace; fill: #555b54; letter-spacing: 0; }
+		.value { font: 600 9px "SFMono-Regular", Consolas, monospace; fill: #191c19; letter-spacing: 0; }
+		.speedup { font: 700 9px "SFMono-Regular", Consolas, monospace; fill: #0756c9; letter-spacing: 0; }
+	</style>
+	<rect width="600" height="590" fill="#fff" />
+	<text x="48" y="30" class="title">GR00T latency by framework and hardware</text>
+	<text x="48" y="49" class="subtitle">Single-sample latency (ms) · common scale · lower is better</text>
+	<g stroke="#dde0dc">
+		<path d="M120 75 V520" stroke="#8e948d" /><path d="M223.6 75 V520" /><path d="M327.1 75 V520" /><path d="M430.7 75 V520" /><path d="M534.3 75 V520" />
+	</g>
+
+	<g aria-label="Thor benchmark">
+		<text x="48" y="91" class="hardware">Thor</text><text x="48" y="108" class="speedup">PhyAI 1.40× vs official</text>
+		<text x="112" y="132" class="framework" text-anchor="end">Official</text><rect x="120" y="120" width="276.4" height="14" fill="#b7bcb6" /><text x="403" y="131" class="value">133.47</text>
+		<text x="112" y="153" class="framework" text-anchor="end">vla.cpp</text><rect x="120" y="141" width="341" height="14" fill="#dfe2de" /><text x="468" y="152" class="value">164.64</text>
+		<text x="112" y="174" class="framework" text-anchor="end">FlashRT</text><rect x="120" y="162" width="136.2" height="14" fill="#80a9df" /><text x="263" y="173" class="value">65.77</text>
+		<text x="112" y="195" class="framework" text-anchor="end">PhyAI</text><rect x="120" y="183" width="197.5" height="14" fill="#0756c9" /><text x="324" y="194" class="value">95.37</text>
+	</g>
+	<path d="M48 225 H555" stroke="#c8ccc7" />
+
+	<g aria-label="RTX 5090 benchmark">
+		<text x="48" y="251" class="hardware">RTX 5090</text><text x="48" y="268" class="speedup">PhyAI 2.28× vs official</text>
+		<text x="112" y="292" class="framework" text-anchor="end">Official</text><rect x="120" y="280" width="97.3" height="14" fill="#b7bcb6" /><text x="224" y="291" class="value">46.96</text>
+		<text x="112" y="313" class="framework" text-anchor="end">vla.cpp</text><rect x="120" y="301" width="67.8" height="14" fill="#dfe2de" /><text x="195" y="312" class="value">32.72</text>
+		<text x="112" y="334" class="framework" text-anchor="end">FlashRT</text><rect x="120" y="322" width="39.9" height="14" fill="#80a9df" /><text x="167" y="333" class="value">19.25</text>
+		<text x="112" y="355" class="framework" text-anchor="end">PhyAI</text><rect x="120" y="343" width="42.7" height="14" fill="#0756c9" /><text x="170" y="354" class="value">20.62</text>
+	</g>
+	<path d="M48 385 H555" stroke="#c8ccc7" />
+
+	<g aria-label="A40 benchmark">
+		<text x="48" y="411" class="hardware">A40</text><text x="48" y="428" class="speedup">PhyAI 4.31× vs official</text>
+		<text x="112" y="452" class="framework" text-anchor="end">Official</text><rect x="120" y="440" width="413.7" height="14" fill="#b7bcb6" /><text x="541" y="451" class="value">199.70</text>
+		<text x="112" y="473" class="framework" text-anchor="end">vla.cpp</text><rect x="120" y="461" width="156.4" height="14" fill="#dfe2de" /><text x="283" y="472" class="value">75.53</text>
+		<text x="112" y="494" class="framework" text-anchor="end">FlashRT</text><rect x="120" y="482" width="93.7" height="14" fill="#80a9df" /><text x="221" y="493" class="value">45.23</text>
+		<text x="112" y="515" class="framework" text-anchor="end">PhyAI</text><rect x="120" y="503" width="96" height="14" fill="#0756c9" /><text x="223" y="514" class="value">46.35</text>
+	</g>
+
+	<path d="M120 520 H555" stroke="#8e948d" />
+	<g class="axis" text-anchor="middle">
+		<text x="120" y="539">0</text><text x="223.6" y="539">50</text><text x="327.1" y="539">100</text><text x="430.7" y="539">150</text><text x="534.3" y="539">200</text>
+	</g>
+	<text x="337" y="570" class="axis" text-anchor="middle">Latency (ms)</text>
+</svg>

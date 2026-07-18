@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 410" role="img" aria-labelledby="title desc">
+	<title id="title">PI0.5 latency breakdown on a Hopper-series GPU</title>
+	<desc id="desc">A one-hundred-percent stacked bar chart shows the share of PI0.5 latency spent in the action expert, LLM prefix, and vision stages as batch size increases from 1 to 32. The expert share falls from 57.2 percent to 13.5 percent.</desc>
+	<style>
+		.title { font: 600 16px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.subtitle { font: 500 10px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.axis { font: 500 9px "SFMono-Regular", Consolas, monospace; fill: #555b54; letter-spacing: 0; }
+		.legend { font: 500 10px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.inside { font: 700 9px "SFMono-Regular", Consolas, monospace; fill: #fff; letter-spacing: 0; }
+	</style>
+	<rect width="600" height="410" fill="#fff" />
+	<text x="48" y="30" class="title">Where PI0.5 spends time</text>
+	<text x="48" y="49" class="subtitle">Hopper-series GPU · Share of end-to-end latency · BF16 · CUDA Graph enabled</text>
+	<g aria-label="Stage legend">
+		<rect x="152" y="67" width="12" height="12" fill="#0756c9" /><text x="171" y="77" class="legend">Expert</text>
+		<rect x="239" y="67" width="12" height="12" fill="#b7bcb6" /><text x="258" y="77" class="legend">LLM prefix</text>
+		<rect x="359" y="67" width="12" height="12" fill="#80a9df" /><text x="378" y="77" class="legend">Vision</text>
+	</g>
+	<g stroke="#dde0dc">
+		<path d="M78 105 H555" /><path d="M78 161.3 H555" /><path d="M78 217.5 H555" /><path d="M78 273.8 H555" /><path d="M78 330 H555" stroke="#8e948d" />
+	</g>
+	<g class="axis" text-anchor="end">
+		<text x="69" y="109">100%</text><text x="69" y="165.3">75%</text><text x="69" y="221.5">50%</text><text x="69" y="277.8">25%</text><text x="69" y="334">0%</text>
+	</g>
+	<g aria-label="Batch size 1: expert 57.2 percent, LLM prefix 27.2 percent, vision 15.6 percent">
+		<rect x="102" y="201.3" width="46" height="128.7" fill="#0756c9" /><rect x="102" y="140.1" width="46" height="61.2" fill="#b7bcb6" /><rect x="102" y="105" width="46" height="35.1" fill="#80a9df" /><text x="125" y="269" class="inside" text-anchor="middle">57%</text>
+	</g>
+	<g aria-label="Batch size 2: expert 44.2 percent, LLM prefix 33.7 percent, vision 22.1 percent">
+		<rect x="178" y="230.6" width="46" height="99.4" fill="#0756c9" /><rect x="178" y="154.7" width="46" height="75.9" fill="#b7bcb6" /><rect x="178" y="105" width="46" height="49.7" fill="#80a9df" /><text x="201" y="284" class="inside" text-anchor="middle">44%</text>
+	</g>
+	<g aria-label="Batch size 4: expert 30.9 percent, LLM prefix 41 percent, vision 28.2 percent">
+		<rect x="254" y="260.5" width="46" height="69.5" fill="#0756c9" /><rect x="254" y="168.2" width="46" height="92.3" fill="#b7bcb6" /><rect x="254" y="104.8" width="46" height="63.4" fill="#80a9df" /><text x="277" y="298" class="inside" text-anchor="middle">31%</text>
+	</g>
+	<g aria-label="Batch size 8: expert 23.2 percent, LLM prefix 44.4 percent, vision 32.4 percent">
+		<rect x="330" y="277.8" width="46" height="52.2" fill="#0756c9" /><rect x="330" y="177.9" width="46" height="99.9" fill="#b7bcb6" /><rect x="330" y="105" width="46" height="72.9" fill="#80a9df" /><text x="353" y="307" class="inside" text-anchor="middle">23%</text>
+	</g>
+	<g aria-label="Batch size 16: expert 18.2 percent, LLM prefix 47.6 percent, vision 34.2 percent">
+		<rect x="406" y="289.1" width="46" height="40.9" fill="#0756c9" /><rect x="406" y="182" width="46" height="107.1" fill="#b7bcb6" /><rect x="406" y="105" width="46" height="77" fill="#80a9df" /><text x="429" y="314" class="inside" text-anchor="middle">18%</text>
+	</g>
+	<g aria-label="Batch size 32: expert 13.5 percent, LLM prefix 51.4 percent, vision 35.1 percent">
+		<rect x="482" y="299.6" width="46" height="30.4" fill="#0756c9" /><rect x="482" y="183.9" width="46" height="115.7" fill="#b7bcb6" /><rect x="482" y="104.9" width="46" height="79" fill="#80a9df" /><text x="505" y="319" class="inside" text-anchor="middle">14%</text>
+	</g>
+	<g class="axis" text-anchor="middle">
+		<text x="125" y="350">1</text><text x="201" y="350">2</text><text x="277" y="350">4</text><text x="353" y="350">8</text><text x="429" y="350">16</text><text x="505" y="350">32</text>
+	</g>
+	<text x="315" y="380" class="axis" text-anchor="middle">Batch size</text>
+</svg>

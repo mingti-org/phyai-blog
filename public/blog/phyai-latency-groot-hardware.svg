@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+	<title id="title">GR00T latency across NVIDIA hardware</title>
+	<desc id="desc">A grouped bar chart comparing PhyAI with the official GR00T implementation on NVIDIA Thor, RTX 5090, and A40. PhyAI achieves 1.40, 2.28, and 4.31 times speedups respectively.</desc>
+	<style>
+		.title { font: 600 19px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.subtitle { font: 500 12px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.axis { font: 500 11px "SFMono-Regular", Consolas, monospace; fill: #555b54; letter-spacing: 0; }
+		.category { font: 600 13px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.value { font: 600 10px "SFMono-Regular", Consolas, monospace; fill: #191c19; letter-spacing: 0; }
+		.legend { font: 500 11px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.speedup { font: 700 11px "SFMono-Regular", Consolas, monospace; fill: #0756c9; letter-spacing: 0; }
+	</style>
+
+	<rect width="600" height="420" fill="#fff" />
+	<text x="68" y="34" class="title">GR00T latency across hardware</text>
+	<text x="68" y="56" class="subtitle">Single-sample latency (ms) · lower is better</text>
+
+	<g aria-label="Legend">
+		<rect x="390" y="26" width="13" height="13" fill="#b7bcb6" />
+		<text x="411" y="37" class="legend">Official</text>
+		<rect x="484" y="26" width="13" height="13" fill="#0756c9" />
+		<text x="505" y="37" class="legend">PhyAI</text>
+	</g>
+
+	<g stroke="#dde0dc" stroke-width="1">
+		<path d="M68 111.8 H568" />
+		<path d="M68 166.4 H568" />
+		<path d="M68 220.9 H568" />
+		<path d="M68 275.5 H568" />
+		<path d="M68 330 H568" stroke="#8e948d" />
+	</g>
+	<g class="axis" text-anchor="end">
+		<text x="58" y="334">0</text>
+		<text x="58" y="279.5">50</text>
+		<text x="58" y="224.9">100</text>
+		<text x="58" y="170.4">150</text>
+		<text x="58" y="115.8">200</text>
+	</g>
+
+	<g aria-label="NVIDIA Thor: official 133.47 milliseconds, PhyAI 95.37 milliseconds">
+		<rect x="112" y="184.4" width="42" height="145.6" fill="#b7bcb6" />
+		<rect x="162" y="226" width="42" height="104" fill="#0756c9" />
+		<text x="133" y="176" class="value" text-anchor="middle">133.47</text>
+		<text x="183" y="218" class="value" text-anchor="middle">95.37</text>
+		<text x="158" y="355" class="category" text-anchor="middle">Thor</text>
+		<text x="158" y="382" class="speedup" text-anchor="middle">1.40× speedup</text>
+	</g>
+	<g aria-label="NVIDIA RTX 5090: official 46.96 milliseconds, PhyAI 20.62 milliseconds">
+		<rect x="272" y="278.8" width="42" height="51.2" fill="#b7bcb6" />
+		<rect x="322" y="307.5" width="42" height="22.5" fill="#0756c9" />
+		<text x="293" y="270" class="value" text-anchor="middle">46.96</text>
+		<text x="343" y="299" class="value" text-anchor="middle">20.62</text>
+		<text x="318" y="355" class="category" text-anchor="middle">RTX 5090</text>
+		<text x="318" y="382" class="speedup" text-anchor="middle">2.28× speedup</text>
+	</g>
+	<g aria-label="NVIDIA A40: official 199.70 milliseconds, PhyAI 46.35 milliseconds">
+		<rect x="432" y="112.1" width="42" height="217.9" fill="#b7bcb6" />
+		<rect x="482" y="279.4" width="42" height="50.6" fill="#0756c9" />
+		<text x="453" y="103" class="value" text-anchor="middle">199.70</text>
+		<text x="503" y="271" class="value" text-anchor="middle">46.35</text>
+		<text x="478" y="355" class="category" text-anchor="middle">A40</text>
+		<text x="478" y="382" class="speedup" text-anchor="middle">4.31× speedup</text>
+	</g>
+
+	<text x="16" y="215" class="axis" text-anchor="middle" transform="rotate(-90 16 215)">Latency (ms)</text>
+</svg>
