@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+	<title id="title">MiniCPM-RobotManip three-view throughput</title>
+	<desc id="desc">A grouped bar chart comparing throughput on RTX 5090, H20, and H100. PhyAI reaches 47.85 hertz in BF16 on RTX 5090, 36.77 hertz on H20, and 62.35 hertz on H100.</desc>
+	<style>
+		.title { font: 600 17px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.subtitle { font: 500 11px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.axis { font: 500 10px "SFMono-Regular", Consolas, monospace; fill: #555b54; letter-spacing: 0; }
+		.category { font: 600 11px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.value { font: 600 9px "SFMono-Regular", Consolas, monospace; fill: #191c19; letter-spacing: 0; }
+		.legend { font: 500 9px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+	</style>
+
+	<rect width="600" height="420" fill="#fff" />
+	<text x="64" y="32" class="title">Three-view throughput by hardware</text>
+	<text x="64" y="51" class="subtitle">448x448 images · 64 text tokens · higher is better</text>
+
+	<g aria-label="Legend">
+		<rect x="258" y="66" width="11" height="11" fill="#b7bcb6" />
+		<text x="275" y="75" class="legend">EmbodyEvalKit</text>
+		<rect x="382" y="66" width="11" height="11" fill="#4f83cc" />
+		<text x="399" y="75" class="legend">PhyAI FP32</text>
+		<rect x="480" y="66" width="11" height="11" fill="#0756c9" />
+		<text x="497" y="75" class="legend">PhyAI BF16</text>
+	</g>
+
+	<g stroke="#dde0dc" stroke-width="1">
+		<path d="M64 94 H570" />
+		<path d="M64 127.7 H570" />
+		<path d="M64 161.4 H570" />
+		<path d="M64 195.1 H570" />
+		<path d="M64 228.9 H570" />
+		<path d="M64 262.6 H570" />
+		<path d="M64 296.3 H570" />
+		<path d="M64 330 H570" stroke="#8e948d" />
+	</g>
+	<g class="axis" text-anchor="end">
+		<text x="54" y="98">70</text>
+		<text x="54" y="131.7">60</text>
+		<text x="54" y="165.4">50</text>
+		<text x="54" y="199.1">40</text>
+		<text x="54" y="232.9">30</text>
+		<text x="54" y="266.6">20</text>
+		<text x="54" y="300.3">10</text>
+		<text x="54" y="334">0</text>
+	</g>
+
+	<g aria-label="RTX 5090: PhyAI FP32 36.23 hertz, PhyAI BF16 47.85 hertz">
+		<rect x="117" y="207.84" width="42" height="122.16" fill="#4f83cc" />
+		<rect x="167" y="168.67" width="42" height="161.33" fill="#0756c9" />
+		<text x="138" y="198" class="value" text-anchor="middle">36.23</text>
+		<text x="188" y="159" class="value" text-anchor="middle">47.85</text>
+		<text x="163" y="354" class="category" text-anchor="middle">RTX 5090</text>
+	</g>
+	<g aria-label="H20: PhyAI FP32 approximately 32 hertz, PhyAI BF16 36.77 hertz">
+		<rect x="277" y="222.11" width="42" height="107.89" fill="#4f83cc" />
+		<rect x="327" y="206.03" width="42" height="123.97" fill="#0756c9" />
+		<text x="298" y="212" class="value" text-anchor="middle">~32</text>
+		<text x="348" y="196" class="value" text-anchor="middle">36.77</text>
+		<text x="323" y="354" class="category" text-anchor="middle">H20</text>
+	</g>
+	<g aria-label="H100: EmbodyEvalKit 9.44 hertz, PhyAI FP32 40.20 hertz, PhyAI BF16 62.35 hertz">
+		<rect x="424" y="298.17" width="34" height="31.83" fill="#b7bcb6" />
+		<rect x="464" y="194.45" width="34" height="135.55" fill="#4f83cc" />
+		<rect x="504" y="119.76" width="34" height="210.24" fill="#0756c9" />
+		<text x="441" y="289" class="value" text-anchor="middle">9.44</text>
+		<text x="481" y="185" class="value" text-anchor="middle">40.20</text>
+		<text x="521" y="110" class="value" text-anchor="middle">62.35</text>
+		<text x="481" y="354" class="category" text-anchor="middle">H100</text>
+	</g>
+
+	<text x="18" y="210" class="axis" text-anchor="middle" transform="rotate(-90 18 210)">Throughput (Hz)</text>
+	<text x="317" y="390" class="subtitle" text-anchor="middle">Action dtype is shown by series; the VLM backbone runs in BF16.</text>
+</svg>

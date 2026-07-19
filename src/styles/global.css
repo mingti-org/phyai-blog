@@ -1105,6 +1105,20 @@ a {
 	transform: translateX(-50%);
 }
 
+.minicpm-demo-figure {
+	width: min(360px, calc(100vw - 80px));
+	margin: 42px 0 46px 50%;
+	transform: translateX(-50%);
+}
+
+.essay-prose .minicpm-demo-figure img {
+	display: block;
+	width: 100%;
+	height: auto;
+	margin: 0;
+	border: 1px solid var(--rule);
+}
+
 .cosmos-video-stack {
 	display: grid;
 	gap: 24px;
@@ -1181,7 +1195,8 @@ a {
 .rtc-figure figcaption,
 .architecture-figure figcaption,
 .benchmark-figure figcaption,
-.cosmos-video-figure figcaption {
+.cosmos-video-figure figcaption,
+.minicpm-demo-figure figcaption {
 	max-width: 720px;
 	margin: 14px auto 0;
 	color: var(--muted);
@@ -1484,6 +1499,7 @@ a {
 	.architecture-figure,
 	.benchmark-figure,
 	.cosmos-video-figure,
+	.minicpm-demo-figure,
 	.essay-video-figure {
 		width: calc(100vw - 36px);
 		margin-block: 34px 38px;

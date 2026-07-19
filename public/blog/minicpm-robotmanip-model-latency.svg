@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-labelledby="title desc">
+	<title id="title">MiniCPM-RobotManip model-side latency benchmark</title>
+	<desc id="desc">A bar chart comparing end-to-end action prediction latency on NVIDIA H100 with three-view BF16 input. MiniCPM-RobotManip takes 120 milliseconds and pi 0.5 takes 234 milliseconds.</desc>
+	<style>
+		.title { font: 600 17px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.subtitle { font: 500 11px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.axis { font: 500 10px "SFMono-Regular", Consolas, monospace; fill: #555b54; letter-spacing: 0; }
+		.category { font: 600 12px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.value { font: 600 11px "SFMono-Regular", Consolas, monospace; fill: #191c19; letter-spacing: 0; }
+		.note { font: 600 10px "Helvetica Neue", Arial, sans-serif; fill: #0756c9; letter-spacing: 0; }
+	</style>
+
+	<rect width="600" height="360" fill="#fff" />
+	<text x="64" y="32" class="title">Model-side action prediction latency</text>
+	<text x="64" y="51" class="subtitle">H100 · three-view input · BF16 · lower is better</text>
+
+	<g stroke="#dde0dc" stroke-width="1">
+		<path d="M64 82 H570" />
+		<path d="M64 128.4 H570" />
+		<path d="M64 174.8 H570" />
+		<path d="M64 221.2 H570" />
+		<path d="M64 267.6 H570" />
+		<path d="M64 314 H570" stroke="#8e948d" />
+	</g>
+	<g class="axis" text-anchor="end">
+		<text x="54" y="86">250</text>
+		<text x="54" y="132.4">200</text>
+		<text x="54" y="178.8">150</text>
+		<text x="54" y="225.2">100</text>
+		<text x="54" y="271.6">50</text>
+		<text x="54" y="318">0</text>
+	</g>
+
+	<g aria-label="MiniCPM-RobotManip, 120 milliseconds">
+		<rect x="153" y="202.64" width="104" height="111.36" fill="#0756c9" />
+		<rect x="153" y="202.64" width="104" height="8" fill="#d9ed69" />
+		<text x="205" y="192" class="value" text-anchor="middle">120 ms</text>
+		<text x="205" y="338" class="category" text-anchor="middle">MiniCPM-RobotManip</text>
+	</g>
+	<g aria-label="pi 0.5, 234 milliseconds">
+		<rect x="367" y="96.85" width="104" height="217.15" fill="#b7bcb6" />
+		<text x="419" y="86" class="value" text-anchor="middle">234 ms</text>
+		<text x="419" y="338" class="category" text-anchor="middle">π0.5</text>
+	</g>
+
+	<path d="M275 165 H349" stroke="#0756c9" stroke-width="1.5" />
+	<path d="M275 165 l8 -5 v10 z" fill="#0756c9" />
+	<text x="312" y="155" class="note" text-anchor="middle">49% lower</text>
+	<text x="18" y="200" class="axis" text-anchor="middle" transform="rotate(-90 18 200)">Latency (ms)</text>
+</svg>

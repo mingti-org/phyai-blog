@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-labelledby="title desc">
+	<title id="title">MiniCPM-RobotManip optimization on NVIDIA H20</title>
+	<desc id="desc">A bar chart showing BF16 throughput increasing from 10.12 hertz for the native implementation to 33.28 hertz with CUDA Graph and 36.77 hertz with CUDA Graph plus Triton fusion.</desc>
+	<style>
+		.title { font: 600 17px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.subtitle { font: 500 11px "Helvetica Neue", Arial, sans-serif; fill: #555b54; letter-spacing: 0; }
+		.axis { font: 500 10px "SFMono-Regular", Consolas, monospace; fill: #555b54; letter-spacing: 0; }
+		.category { font: 600 11px "Helvetica Neue", Arial, sans-serif; fill: #191c19; letter-spacing: 0; }
+		.value { font: 600 11px "SFMono-Regular", Consolas, monospace; fill: #191c19; letter-spacing: 0; }
+		.speedup { font: 600 10px "SFMono-Regular", Consolas, monospace; fill: #0756c9; letter-spacing: 0; }
+	</style>
+
+	<rect width="600" height="420" fill="#fff" />
+	<text x="64" y="32" class="title">H20 optimization sequence</text>
+	<text x="64" y="51" class="subtitle">MiniCPM-RobotManip · BF16 · throughput (Hz)</text>
+
+	<g stroke="#dde0dc" stroke-width="1">
+		<path d="M64 80 H570" />
+		<path d="M64 142.5 H570" />
+		<path d="M64 205 H570" />
+		<path d="M64 267.5 H570" />
+		<path d="M64 330 H570" stroke="#8e948d" />
+	</g>
+	<g class="axis" text-anchor="end">
+		<text x="54" y="84">40</text>
+		<text x="54" y="146.5">30</text>
+		<text x="54" y="209">20</text>
+		<text x="54" y="271.5">10</text>
+		<text x="54" y="334">0</text>
+	</g>
+
+	<g aria-label="Native implementation, 10.12 hertz">
+		<rect x="102" y="266.75" width="92" height="63.25" fill="#b7bcb6" />
+		<text x="148" y="257" class="value" text-anchor="middle">10.12</text>
+		<text x="148" y="352" class="category" text-anchor="middle">Native</text>
+		<text x="148" y="370" class="speedup" text-anchor="middle">1.00x</text>
+	</g>
+	<g aria-label="CUDA Graph, 33.28 hertz">
+		<rect x="255" y="122" width="92" height="208" fill="#4f83cc" />
+		<text x="301" y="112" class="value" text-anchor="middle">33.28</text>
+		<text x="301" y="352" class="category" text-anchor="middle">CUDA Graph</text>
+		<text x="301" y="370" class="speedup" text-anchor="middle">3.29x</text>
+	</g>
+	<g aria-label="CUDA Graph plus Triton fusion, 36.77 hertz">
+		<rect x="408" y="100.19" width="92" height="229.81" fill="#0756c9" />
+		<rect x="408" y="100.19" width="92" height="8" fill="#d9ed69" />
+		<text x="454" y="90" class="value" text-anchor="middle">36.77</text>
+		<text x="454" y="350" class="category" text-anchor="middle">Graph + Triton</text>
+		<text x="454" y="366" class="category" text-anchor="middle">fusion</text>
+		<text x="454" y="386" class="speedup" text-anchor="middle">3.63x</text>
+	</g>
+
+	<text x="18" y="205" class="axis" text-anchor="middle" transform="rotate(-90 18 205)">Throughput (Hz)</text>
+</svg>
