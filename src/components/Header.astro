@@ -5,12 +5,12 @@ const pathname = Astro.url.pathname;
 const homePath = sitePath();
 const aboutPath = sitePath('about/');
 const blogsPath = sitePath('blogs/');
-const concatPath = sitePath('concat/');
+const contactPath = sitePath('contact/');
 const logoPath = sitePath('brand/phyai-logo-light.png');
 const onHome = pathname === homePath || pathname === homePath.replace(/\/$/, '');
 const onAbout = pathname.startsWith(aboutPath);
 const onBlogs = pathname.startsWith(blogsPath);
-const onConcat = pathname.startsWith(concatPath);
+const onContact = pathname.startsWith(contactPath);
 ---
 
 <header class="site-header" data-site-header>
@@ -23,7 +23,7 @@ const onConcat = pathname.startsWith(concatPath);
 			<a href={homePath} aria-current={onHome ? 'page' : undefined}>Home</a>
 			<a href={aboutPath} aria-current={onAbout ? 'page' : undefined}>About</a>
 			<a href={blogsPath} aria-current={onBlogs ? 'page' : undefined}>Blog</a>
-			<a href={concatPath} aria-current={onConcat ? 'page' : undefined}>Concat</a>
+			<a href={contactPath} aria-current={onContact ? 'page' : undefined}>Contact</a>
 		</nav>
 
 		<div class="header-actions">
@@ -55,7 +55,7 @@ const onConcat = pathname.startsWith(concatPath);
 				<a href={homePath} aria-current={onHome ? 'page' : undefined}>Home</a>
 				<a href={aboutPath} aria-current={onAbout ? 'page' : undefined}>About</a>
 				<a href={blogsPath} aria-current={onBlogs ? 'page' : undefined}>Blog</a>
-				<a href={concatPath} aria-current={onConcat ? 'page' : undefined}>Concat</a>
+				<a href={contactPath} aria-current={onContact ? 'page' : undefined}>Contact</a>
 				<a href="https://phyai.mintlify.app/" target="_blank" rel="noreferrer">
 					Documentation <span aria-hidden="true">&#8599;</span>
 				</a>

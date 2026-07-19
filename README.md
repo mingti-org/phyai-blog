@@ -5,7 +5,7 @@ PhyAI is an Astro site for the PhyAI latency-first serving engine. The site is w
 - `/` - the home page, with the pi0.5 quick start, nightly installation command, principles, and latest essay.
 - `/about/` - the project positioning and design principles.
 - `/blogs/` - the blog index, generated from the `blogs` content collection.
-- `/concat/` - links for source code, issues, and documentation.
+- `/contact/` - contact details for the PhyAI team and project maintainer.
 
 ## Adding an essay
 

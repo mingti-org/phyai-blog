@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 600" role="img" aria-labelledby="title desc">
+	<title id="title">Mobile view of the theoretical effect of a two-times Predict speedup on VLA reinforcement-learning step time</title>
+	<desc id="desc">Two vertically stacked donut charts compare the measured steady-state allocation of a PI0.5 reinforcement-learning step with a hypothetical case where only Predict is twice as fast. Step time falls from 109.1 to 80.1 seconds, a theoretical 26.6 percent reduction.</desc>
+	<style>
+		.title { font: 600 15px "Helvetica Neue", Arial, sans-serif; fill: #191c19; }
+		.subtitle { font: 500 9px "Helvetica Neue", Arial, sans-serif; fill: #555b54; }
+		.panel { font: 600 12px "Helvetica Neue", Arial, sans-serif; fill: #191c19; }
+		.total { font: 600 19px "SFMono-Regular", Consolas, monospace; fill: #191c19; }
+		.unit { font: 500 9px "Helvetica Neue", Arial, sans-serif; fill: #555b54; }
+		.value { font: 600 10px "SFMono-Regular", Consolas, monospace; fill: #191c19; }
+		.label { font: 500 10px "Helvetica Neue", Arial, sans-serif; fill: #555b54; }
+		.takeaway { font: 600 10px "Helvetica Neue", Arial, sans-serif; fill: #0756c9; }
+	</style>
+
+	<rect width="390" height="600" fill="#fff" />
+	<text x="24" y="27" class="title">Projected RL step-time impact of 2x Predict</text>
+	<text x="24" y="46" class="subtitle">PI0.5 · 8×A100 · batch 40 · 41 Predict calls/step</text>
+
+	<g aria-label="Measured steady-state step: Predict 57.966 seconds and all other work 51.134 seconds, for a total of 109.1 seconds">
+		<text x="195" y="77" class="panel" text-anchor="middle">Measured steady state</text>
+		<circle cx="195" cy="151" r="57" fill="none" stroke="#e1e4df" stroke-width="22" />
+		<circle cx="195" cy="151" r="57" fill="none" stroke="#0756c9" stroke-width="22" pathLength="100" stroke-dasharray="53.1 46.9" transform="rotate(-90 195 151)" />
+		<text x="195" y="148" class="total" text-anchor="middle">109.1 s</text>
+		<text x="195" y="165" class="unit" text-anchor="middle">per step</text>
+		<text x="195" y="229" class="value" text-anchor="middle">Predict 57.966 s · 53.1%</text>
+		<text x="195" y="247" class="label" text-anchor="middle">All other work 51.134 s · 46.9%</text>
+	</g>
+
+	<g aria-label="Predict receives a theoretical two-times speedup">
+		<text x="195" y="280" class="panel" text-anchor="middle">2× Predict</text>
+		<path d="M195 290 V309" fill="none" stroke="#8e948d" stroke-width="1.5" />
+		<path d="M189 303 L195 309 L201 303" fill="none" stroke="#8e948d" stroke-width="1.5" />
+	</g>
+
+	<g aria-label="Hypothetical optimized step: Predict 28.983 seconds and all other work 51.134 seconds, for a total of 80.117 seconds">
+		<text x="195" y="336" class="panel" text-anchor="middle">Theoretical projection</text>
+		<circle cx="195" cy="410" r="57" fill="none" stroke="#e1e4df" stroke-width="22" />
+		<circle cx="195" cy="410" r="57" fill="none" stroke="#0756c9" stroke-width="22" pathLength="100" stroke-dasharray="36.2 63.8" transform="rotate(-90 195 410)" />
+		<text x="195" y="407" class="total" text-anchor="middle">80.1 s</text>
+		<text x="195" y="424" class="unit" text-anchor="middle">per step</text>
+		<text x="195" y="488" class="value" text-anchor="middle">Predict 28.983 s · 36.2%</text>
+		<text x="195" y="506" class="label" text-anchor="middle">All other work 51.134 s · 63.8%</text>
+	</g>
+
+	<line x1="24" y1="535" x2="366" y2="535" stroke="#dde0dc" />
+	<text x="195" y="560" class="takeaway" text-anchor="middle">Theoretical step-time reduction: 26.6%</text>
+	<text x="195" y="579" class="subtitle" text-anchor="middle">not yet validated end to end</text>
+</svg>
