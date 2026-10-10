@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+<title id="title">Inference data parallelism across two hosts</title>
+<desc id="desc">Independent requests from application and robot clients reach the PhyAI Gateway. The gateway selects a healthy model server using server-level in-flight counts. Host A runs model servers A0 and A1; Host B runs B0 and B1. Each model server has its own Engine and one complete PI0.5 model on one GPU. There are four complete model copies in total. Each request goes to one replica. This is a conceptual topology, not measured throughput.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L6 4L1 7" fill="none" stroke="#0756c9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<style>text {font-family: "Helvetica Neue", Arial, sans-serif;}</style>
+<rect x="0" y="0" width="1200" height="800" rx="18" fill="#fff"/>
+<text x="48" y="44" font-size="16" font-weight="700" fill="#0756c9" text-anchor="start">INFERENCE DATA PARALLELISM</text>
+<text x="48" y="87" font-size="34" font-weight="600" fill="#082b61" text-anchor="start">Inference DP across hosts</text>
+<text x="48" y="122" font-size="21" font-weight="400" fill="#555b54" text-anchor="start">Route independent requests to four full PI0.5 replicas.</text>
+<rect x="48" y="157" width="290" height="139" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="70" y="195" font-size="23" font-weight="600" fill="#082b61" text-anchor="start" data-box="64,169,266,33">Independent requests</text>
+<text x="70" y="228" font-size="18" font-weight="400" fill="#555b54" text-anchor="start" data-box="64,202,266,31">HTTP · gRPC · LeRobot</text>
+<rect x="70" y="246" width="48" height="31" rx="7" fill="#fff" stroke="#c5d8f4"/>
+<text x="94" y="268" font-size="17" font-weight="600" fill="#082b61" text-anchor="middle" data-box="74,248,40,27">R1</text>
+<rect x="130" y="246" width="48" height="31" rx="7" fill="#fff" stroke="#c5d8f4"/>
+<text x="154" y="268" font-size="17" font-weight="600" fill="#082b61" text-anchor="middle" data-box="134,248,40,27">R2</text>
+<rect x="190" y="246" width="48" height="31" rx="7" fill="#fff" stroke="#c5d8f4"/>
+<text x="214" y="268" font-size="17" font-weight="600" fill="#082b61" text-anchor="middle" data-box="194,248,40,27">R3</text>
+<rect x="250" y="246" width="48" height="31" rx="7" fill="#fff" stroke="#c5d8f4"/>
+<text x="274" y="268" font-size="17" font-weight="600" fill="#082b61" text-anchor="middle" data-box="254,248,40,27">R4</text>
+<path d="M338 226H404" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="416" y="157" width="736" height="139" rx="12" fill="#082b61"/>
+<text x="444" y="200" font-size="30" font-weight="600" fill="#fff" text-anchor="start">PhyAI Gateway</text>
+<text x="444" y="241" font-size="23" font-weight="500" fill="#fff" text-anchor="start" data-box="438,214,693,33">Selects a healthy model server by in-flight count</text>
+<text x="444" y="277" font-size="19" font-weight="400" fill="#d8e7ff" text-anchor="start" data-box="438,251,693,31">Counts requests per server; routes among all four servers.</text>
+<rect x="48" y="370" width="528" height="306" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="72" y="406" font-size="26" font-weight="600" fill="#082b61" text-anchor="start">Host A</text>
+<text x="552" y="406" font-size="19" font-weight="500" fill="#555b54" text-anchor="end">2 GPUs</text>
+<rect x="624" y="370" width="528" height="306" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="648" y="406" font-size="26" font-weight="600" fill="#082b61" text-anchor="start">Host B</text>
+<text x="1128" y="406" font-size="19" font-weight="500" fill="#555b54" text-anchor="end">2 GPUs</text>
+<path d="M784 296V330H185" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M784 330H1015" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M185 330V424" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M439 330V424" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M761 330V424" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M1015 330V424" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="72" y="432" width="226" height="222" rx="12" fill="#fff" stroke="#c5d8f4"/>
+<text x="185" y="464" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="82,439,206,31">Model server A0</text>
+<rect x="86" y="486" width="198" height="43" rx="8" fill="#d9ed69"/>
+<text x="185" y="515" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="96,490,178,35">Engine</text>
+<path d="M185 529V543" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="86" y="550" width="198" height="88" rx="9" fill="#082b61"/>
+<text x="185" y="582" font-size="21" font-weight="600" fill="#fff" text-anchor="middle" data-box="96,558,178,31">GPU 0 · PI0.5</text>
+<text x="185" y="615" font-size="18" font-weight="400" fill="#d8e7ff" text-anchor="middle" data-box="96,591,178,31">Complete model</text>
+<rect x="326" y="432" width="226" height="222" rx="12" fill="#fff" stroke="#c5d8f4"/>
+<text x="439" y="464" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="336,439,206,31">Model server A1</text>
+<rect x="340" y="486" width="198" height="43" rx="8" fill="#d9ed69"/>
+<text x="439" y="515" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="350,490,178,35">Engine</text>
+<path d="M439 529V543" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="340" y="550" width="198" height="88" rx="9" fill="#082b61"/>
+<text x="439" y="582" font-size="21" font-weight="600" fill="#fff" text-anchor="middle" data-box="350,558,178,31">GPU 1 · PI0.5</text>
+<text x="439" y="615" font-size="18" font-weight="400" fill="#d8e7ff" text-anchor="middle" data-box="350,591,178,31">Complete model</text>
+<rect x="648" y="432" width="226" height="222" rx="12" fill="#fff" stroke="#c5d8f4"/>
+<text x="761" y="464" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="658,439,206,31">Model server B0</text>
+<rect x="662" y="486" width="198" height="43" rx="8" fill="#d9ed69"/>
+<text x="761" y="515" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="672,490,178,35">Engine</text>
+<path d="M761 529V543" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="662" y="550" width="198" height="88" rx="9" fill="#082b61"/>
+<text x="761" y="582" font-size="21" font-weight="600" fill="#fff" text-anchor="middle" data-box="672,558,178,31">GPU 0 · PI0.5</text>
+<text x="761" y="615" font-size="18" font-weight="400" fill="#d8e7ff" text-anchor="middle" data-box="672,591,178,31">Complete model</text>
+<rect x="902" y="432" width="226" height="222" rx="12" fill="#fff" stroke="#c5d8f4"/>
+<text x="1015" y="464" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="912,439,206,31">Model server B1</text>
+<rect x="916" y="486" width="198" height="43" rx="8" fill="#d9ed69"/>
+<text x="1015" y="515" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="926,490,178,35">Engine</text>
+<path d="M1015 529V543" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="916" y="550" width="198" height="88" rx="9" fill="#082b61"/>
+<text x="1015" y="582" font-size="21" font-weight="600" fill="#fff" text-anchor="middle" data-box="926,558,178,31">GPU 1 · PI0.5</text>
+<text x="1015" y="615" font-size="18" font-weight="400" fill="#d8e7ff" text-anchor="middle" data-box="926,591,178,31">Complete model</text>
+<rect x="48" y="704" width="1104" height="44" rx="12" fill="#d9ed69"/>
+<text x="600" y="734" font-size="23" font-weight="600" fill="#082b61" text-anchor="middle">4 full model copies · One model server per replica</text>
+<text x="48" y="783" font-size="18" font-weight="400" fill="#555b54" text-anchor="start">Each request goes to one replica. Conceptual topology, not measured throughput.</text>
+</svg>

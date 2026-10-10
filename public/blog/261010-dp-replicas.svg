@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 730" role="img" aria-labelledby="title desc">
+<title id="title">One model, four independent replicas</title>
+<desc id="desc">Conceptual inference data parallelism, with no measured speedup claim. Independent requests, including caller-prepared batches, enter one Engine and RequestDispatcher. Each whole request is routed to one complete PI0.5 model replica on GPU 0, 1, 2, or 3. The replicas process different inputs concurrently. Each request has its own result or future. More replicas increase independent work capacity; one request stays within one replica. There is no automatic global batch split or merge and no training gradient synchronization.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M1 1L7 4.5L1 8" fill="none" stroke="#0756c9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<style>text {font-family: "Helvetica Neue", Arial, sans-serif;}</style>
+<rect width="1200" height="730" rx="18" fill="#fff"/>
+<text x="48" y="44" font-size="16" font-weight="700" fill="#0756c9" text-anchor="start">CONCEPTUAL INFERENCE DP</text>
+<text x="48" y="87" font-size="32" font-weight="600" fill="#191c19" text-anchor="start">One model, four independent replicas</text>
+<text x="48" y="123" font-size="20" font-weight="400" fill="#555b54" text-anchor="start">Different inputs run concurrently on complete copies of the same model.</text>
+<rect x="232" y="151" width="736" height="64" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="600" y="179" font-size="22" font-weight="600" fill="#082b61" text-anchor="middle">Independent requests A · B · C · D</text>
+<text x="600" y="204" font-size="18" font-weight="400" fill="#555b54" text-anchor="middle">A request can contain a caller-prepared batch.</text>
+<path d="M600 215V244" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="48" y="252" width="1104" height="80" rx="12" fill="#082b61" stroke="#082b61"/>
+<text x="600" y="284" font-size="27" font-weight="600" fill="#fff" text-anchor="middle">Engine / RequestDispatcher</text>
+<text x="600" y="315" font-size="21" font-weight="400" fill="#d8e7ff" text-anchor="middle">Routes each whole request to one replica</text>
+<path d="M177 332V348" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="107" y="348" width="140" height="33" rx="8" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="177" y="371" font-size="20" font-weight="600" fill="#0756c9" text-anchor="middle">Request A</text>
+<path d="M177 381V399" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="48" y="407" width="258" height="145" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<rect x="64" y="423" width="79" height="30" rx="7" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="103.5" y="444" font-size="19" font-weight="600" fill="#082b61" text-anchor="middle">GPU 0</text>
+<text x="165" y="445" font-size="20" font-weight="600" fill="#082b61" text-anchor="start">Replica 0</text>
+<rect x="64" y="466" width="226" height="69" rx="8" fill="#082b61" stroke="#082b61"/>
+<text x="177" y="494" font-size="25" font-weight="600" fill="#fff" text-anchor="middle">PI0.5</text>
+<text x="177" y="522" font-size="20" font-weight="400" fill="#d8e7ff" text-anchor="middle">Complete model</text>
+<path d="M177 552V579" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="48" y="587" width="258" height="47" rx="9" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="177" y="618" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle">Result A / Future A</text>
+<path d="M459 332V348" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="389" y="348" width="140" height="33" rx="8" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="459" y="371" font-size="20" font-weight="600" fill="#0756c9" text-anchor="middle">Request B</text>
+<path d="M459 381V399" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="330" y="407" width="258" height="145" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<rect x="346" y="423" width="79" height="30" rx="7" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="385.5" y="444" font-size="19" font-weight="600" fill="#082b61" text-anchor="middle">GPU 1</text>
+<text x="447" y="445" font-size="20" font-weight="600" fill="#082b61" text-anchor="start">Replica 1</text>
+<rect x="346" y="466" width="226" height="69" rx="8" fill="#082b61" stroke="#082b61"/>
+<text x="459" y="494" font-size="25" font-weight="600" fill="#fff" text-anchor="middle">PI0.5</text>
+<text x="459" y="522" font-size="20" font-weight="400" fill="#d8e7ff" text-anchor="middle">Complete model</text>
+<path d="M459 552V579" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="330" y="587" width="258" height="47" rx="9" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="459" y="618" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle">Result B / Future B</text>
+<path d="M741 332V348" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="671" y="348" width="140" height="33" rx="8" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="741" y="371" font-size="20" font-weight="600" fill="#0756c9" text-anchor="middle">Request C</text>
+<path d="M741 381V399" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="612" y="407" width="258" height="145" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<rect x="628" y="423" width="79" height="30" rx="7" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="667.5" y="444" font-size="19" font-weight="600" fill="#082b61" text-anchor="middle">GPU 2</text>
+<text x="729" y="445" font-size="20" font-weight="600" fill="#082b61" text-anchor="start">Replica 2</text>
+<rect x="628" y="466" width="226" height="69" rx="8" fill="#082b61" stroke="#082b61"/>
+<text x="741" y="494" font-size="25" font-weight="600" fill="#fff" text-anchor="middle">PI0.5</text>
+<text x="741" y="522" font-size="20" font-weight="400" fill="#d8e7ff" text-anchor="middle">Complete model</text>
+<path d="M741 552V579" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="612" y="587" width="258" height="47" rx="9" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="741" y="618" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle">Result C / Future C</text>
+<path d="M1023 332V348" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="953" y="348" width="140" height="33" rx="8" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="1023" y="371" font-size="20" font-weight="600" fill="#0756c9" text-anchor="middle">Request D</text>
+<path d="M1023 381V399" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="894" y="407" width="258" height="145" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<rect x="910" y="423" width="79" height="30" rx="7" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="949.5" y="444" font-size="19" font-weight="600" fill="#082b61" text-anchor="middle">GPU 3</text>
+<text x="1011" y="445" font-size="20" font-weight="600" fill="#082b61" text-anchor="start">Replica 3</text>
+<rect x="910" y="466" width="226" height="69" rx="8" fill="#082b61" stroke="#082b61"/>
+<text x="1023" y="494" font-size="25" font-weight="600" fill="#fff" text-anchor="middle">PI0.5</text>
+<text x="1023" y="522" font-size="20" font-weight="400" fill="#d8e7ff" text-anchor="middle">Complete model</text>
+<path d="M1023 552V579" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="894" y="587" width="258" height="47" rx="9" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="1023" y="618" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle">Result D / Future D</text>
+<text x="600" y="673" font-size="23" font-weight="600" fill="#082b61" text-anchor="middle">More replicas increase independent work capacity.</text>
+<text x="600" y="708" font-size="19" font-weight="400" fill="#555b54" text-anchor="middle">One request stays in one replica. No global batch split/merge or training gradient sync.</text>
+</svg>

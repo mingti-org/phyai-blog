@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 710" role="img" aria-labelledby="title desc">
+<title id="title">From model operation to execution kernel</title><desc id="desc">Operation requirements and a user policy select a compatible backend. Prepared choices are reused on repeated calls.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M1 1L7 4.5L1 8" fill="none" stroke="#0756c9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1200" height="710" rx="18" fill="#fff"/>
+<style>text {font-family: 'Helvetica Neue', Arial, sans-serif;} .mono {font-family: 'SFMono-Regular', Consolas, monospace;}</style>
+<text x="48" y="44" font-size="16" font-weight="700" fill="#0756c9" text-anchor="start" class="">KERNEL DISPATCH</text>
+<text x="48" y="87" font-size="32" font-weight="600" fill="#191c19" text-anchor="start" class="">From model operation to execution kernel</text>
+<text x="48" y="123" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Keep workload requirements explicit. Reuse the selection machinery.</text>
+<rect x="48" y="170" width="284" height="322" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="72" y="210" font-size="22" font-weight="600" fill="#082b61" text-anchor="start" class="">A model layer calls</text>
+<text x="72" y="250" font-size="20" font-weight="400" fill="#082b61" text-anchor="start" class="">GEMM / Attention / Norm</text>
+<path d="M72 273H308" fill="none" stroke="#c5d8f4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="72" y="309" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">GPU architecture</text>
+<text x="72" y="351" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Tensor shape and dtype</text>
+<text x="72" y="393" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Quantization layout</text>
+<text x="72" y="435" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Model role / Graph mode</text>
+<path d="M332 332H387" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="392" y="170" width="362" height="322" rx="12" fill="#082b61" stroke="#082b61"/>
+<text x="420" y="210" font-size="26" font-weight="600" fill="white" text-anchor="start" class="">PhyAI dispatcher</text>
+<text x="420" y="266" font-size="17" font-weight="700" fill="#d9ed69" text-anchor="start" class="">01</text>
+<text x="461" y="266" font-size="21" font-weight="600" fill="white" text-anchor="start" class="">Check capabilities</text>
+<text x="420" y="296" font-size="18" font-weight="400" fill="#d8e7ff" text-anchor="start" class="">Can this kernel execute the call?</text>
+<text x="420" y="347" font-size="17" font-weight="700" fill="#d9ed69" text-anchor="start" class="">02</text>
+<text x="461" y="347" font-size="21" font-weight="600" fill="white" text-anchor="start" class="">Apply the policy</text>
+<text x="420" y="377" font-size="18" font-weight="400" fill="#d8e7ff" text-anchor="start" class="">Priorities, restrictions, fallback</text>
+<text x="420" y="428" font-size="17" font-weight="700" fill="#d9ed69" text-anchor="start" class="">03</text>
+<text x="461" y="428" font-size="21" font-weight="600" fill="white" text-anchor="start" class="">Prepare the selection</text>
+<text x="420" y="458" font-size="18" font-weight="400" fill="#d8e7ff" text-anchor="start" class="">Compatible callable or backend</text>
+<rect x="810" y="170" width="342" height="58" rx="12" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="832" y="207" font-size="22" font-weight="600" fill="#082b61" text-anchor="start" class="">Policy YAML</text>
+<path d="M810 198H772V142H573V162" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="810" y="268" width="342" height="58" rx="12" fill="white" stroke="#c8ccc7"/>
+<text x="832" y="305" font-size="21" font-weight="500" fill="#191c19" text-anchor="start" class="">FlashInfer</text>
+<rect x="810" y="344" width="342" height="58" rx="12" fill="white" stroke="#c8ccc7"/>
+<text x="832" y="381" font-size="21" font-weight="500" fill="#191c19" text-anchor="start" class="">Humming</text>
+<rect x="810" y="420" width="342" height="58" rx="12" fill="white" stroke="#c8ccc7"/>
+<text x="832" y="457" font-size="21" font-weight="500" fill="#191c19" text-anchor="start" class="">PhyAI / reference kernels</text>
+<path d="M754 287H780V449H805" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M780 297H805" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M780 373H805" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M780 449H805" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="48" y="550" width="1104" height="106" rx="12" fill="#f2f3f1" stroke="#c8ccc7"/>
+<text x="72" y="586" font-size="16" font-weight="700" fill="#0756c9" text-anchor="start" class="">REPEATED CALLS</text>
+<text x="280" y="614" font-size="23" font-weight="600" fill="#082b61" text-anchor="start" class="">Cached selection</text>
+<text x="619" y="614" font-size="23" font-weight="600" fill="#082b61" text-anchor="start" class="">Prepared kernel</text>
+<text x="957" y="614" font-size="23" font-weight="600" fill="#082b61" text-anchor="start" class="">Output</text>
+<path d="M484 606H596" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M810 606H930" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M573 492V542" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<text x="72" y="685" font-size="18" font-weight="400" fill="#555b54" text-anchor="start" class="">Optional autotune measures supported operations before caching the choice.</text>
+</svg>

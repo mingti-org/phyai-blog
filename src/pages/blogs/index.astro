@@ -4,7 +4,8 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 import { sitePath } from '../../utils/site-path';
 
 const essays = (await getCollection('blogs', ({ data }) => !data.draft)).sort(
-	(a, b) => b.data.published.valueOf() - a.data.published.valueOf(),
+	(a, b) => b.data.published.valueOf() - a.data.published.valueOf()
+		|| Number(b.data.featured) - Number(a.data.featured),
 );
 
 const formatDate = (date: Date) =>

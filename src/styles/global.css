@@ -1091,6 +1091,53 @@ a {
 	display: block;
 }
 
+.systems-figure picture {
+	display: block;
+}
+
+.release-table-wrap {
+	margin-block: 30px;
+	overflow-x: auto;
+	border-block: 1px solid var(--rule);
+	overscroll-behavior-inline: contain;
+}
+
+.release-table {
+	width: 100%;
+	min-width: 510px;
+	border-collapse: collapse;
+	font-family: var(--sans);
+	font-size: 14px;
+	line-height: 1.5;
+	text-align: left;
+}
+
+.release-table caption {
+	padding: 16px 0;
+	color: var(--muted);
+	font-size: 13px;
+	text-align: left;
+}
+
+.release-table :is(th, td) {
+	padding: 14px 12px;
+	border-top: 1px solid var(--rule);
+	vertical-align: top;
+}
+
+.release-table thead {
+	background: var(--surface);
+}
+
+.release-table tbody th {
+	font-weight: 500;
+}
+
+.release-table td:last-child {
+	color: var(--phy-blue);
+	font-weight: 600;
+}
+
 .analysis-figure {
 	width: min(660px, calc(100vw - 80px));
 }
@@ -1182,7 +1229,11 @@ a {
 	margin: 0;
 }
 
-.essay-prose :is(.cosmos-benchmark-figure, .analysis-figure, .vla-rl-figure) .benchmark-chart {
+.rl-pr-figure > a {
+	display: block;
+}
+
+.essay-prose :is(.cosmos-benchmark-figure, .analysis-figure, .vla-rl-figure, .rl-pr-figure) .benchmark-chart {
 	width: 100%;
 	margin: 0;
 }
@@ -1487,6 +1538,20 @@ a {
 }
 
 @media (max-width: 620px) {
+	.release-table {
+		min-width: 0;
+		table-layout: fixed;
+		font-size: 12px;
+	}
+
+	.release-table :is(th, td) {
+		padding: 12px 6px;
+	}
+
+	.release-table :is(th, td):first-child {
+		width: 32%;
+	}
+
 	.page-shell {
 		padding-inline: 18px;
 	}

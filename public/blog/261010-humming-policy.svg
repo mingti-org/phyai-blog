@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 730" role="img" aria-labelledby="title desc">
+<title id="title">Selective quantization in PI0.5</title><desc id="desc">The W4A16 preset quantizes language and action-expert attention and MLP weights to INT4, while other layers keep configured precision. Humming executes the selected GEMMs.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M1 1L7 4.5L1 8" fill="none" stroke="#0756c9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1200" height="730" rx="18" fill="#fff"/>
+<style>text {font-family: 'Helvetica Neue', Arial, sans-serif;} .mono {font-family: 'SFMono-Regular', Consolas, monospace;}</style>
+<text x="48" y="44" font-size="16" font-weight="700" fill="#0756c9" text-anchor="start" class="">HUMMING / PI0.5 W4A16</text>
+<text x="48" y="87" font-size="32" font-weight="600" fill="#191c19" text-anchor="start" class="">Selective quantization in PI0.5</text>
+<text x="48" y="123" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">One policy describes both the weight format and the execution kernel.</text>
+<rect x="48" y="173" width="306" height="121" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="72" y="215" font-size="24" font-weight="600" fill="#082b61" text-anchor="start" class="">Original checkpoint</text>
+<text x="72" y="255" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Unquantized model weights</text>
+<path d="M354 233H422" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="431" y="173" width="721" height="121" rx="12" fill="#082b61" stroke="#082b61"/>
+<text x="457" y="215" font-size="25" font-weight="600" fill="white" text-anchor="start" class="">Kernel policy YAML</text>
+<text x="457" y="255" font-size="22" font-weight="400" fill="#d8e7ff" text-anchor="start" class="">Layer matching + precision + kernel selection</text>
+<path d="M791 294V325H320V355" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M791 325H888V355" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="48" y="363" width="537" height="173" rx="12" fill="#f2f3f1" stroke="#c8ccc7"/>
+<text x="74" y="406" font-size="24" font-weight="600" fill="#191c19" text-anchor="start" class="">Keep configured precision</text>
+<text x="74" y="445" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Vision · embeddings · normalization</text>
+<text x="74" y="481" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Action / time heads · optional value head</text>
+<rect x="615" y="363" width="537" height="173" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="641" y="406" font-size="24" font-weight="600" fill="#082b61" text-anchor="start" class="">Quantize selected projections</text>
+<text x="641" y="445" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Language model + action expert</text>
+<text x="641" y="481" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Attention / MLP → INT4, group size 128</text>
+<path d="M316 536V575" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M883 536V575" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="48" y="584" width="537" height="83" rx="12" fill="#f2f3f1" stroke="#c8ccc7"/>
+<text x="74" y="632" font-size="22" font-weight="500" fill="#191c19" text-anchor="start" class="">Their compatible execution kernels</text>
+<rect x="615" y="584" width="537" height="83" rx="12" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="641" y="617" font-size="23" font-weight="600" fill="#082b61" text-anchor="start" class="">Humming W4A16 GEMM</text>
+<text x="641" y="647" font-size="20" font-weight="400" fill="#082b61" text-anchor="start" class="">BF16 / FP16 activations and outputs</text>
+<text x="48" y="706" font-size="18" font-weight="400" fill="#555b54" text-anchor="start" class="">The supplied BF16 preset requires NVIDIA SM80+ and compatible local weight dimensions.</text>
+</svg>

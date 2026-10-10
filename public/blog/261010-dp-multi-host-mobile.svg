@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="1200" viewBox="0 0 560 1200" role="img" aria-labelledby="title desc">
+<title id="title">Inference data parallelism across two hosts</title>
+<desc id="desc">Independent requests from application and robot clients reach the PhyAI Gateway. The gateway selects a healthy model server using server-level in-flight counts. Host A runs model servers A0 and A1; Host B runs B0 and B1. Each model server has its own Engine and one complete PI0.5 model on one GPU. There are four complete model copies in total. Each request goes to one replica. This is a conceptual topology, not measured throughput.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="userSpaceOnUse"><path d="M1 1L6 4L1 7" fill="none" stroke="#0756c9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<style>text {font-family: "Helvetica Neue", Arial, sans-serif;}</style>
+<rect x="0" y="0" width="560" height="1200" rx="18" fill="#fff"/>
+<text x="28" y="38" font-size="15" font-weight="700" fill="#0756c9" text-anchor="start">INFERENCE DATA PARALLELISM</text>
+<text x="28" y="82" font-size="31" font-weight="600" fill="#082b61" text-anchor="start" data-box="24,48,512,42">Inference DP across hosts</text>
+<text x="28" y="116" font-size="21" font-weight="400" fill="#555b54" text-anchor="start">Four full PI0.5 replicas on two hosts.</text>
+<rect x="36" y="145" width="496" height="94" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="60" y="182" font-size="24" font-weight="600" fill="#082b61" text-anchor="start">Independent requests</text>
+<text x="60" y="216" font-size="19" font-weight="400" fill="#555b54" text-anchor="start" data-box="52,190,468,33">Application clients · Robot clients · LeRobot</text>
+<path d="M284 239V273" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="36" y="283" width="496" height="126" rx="12" fill="#082b61"/>
+<text x="60" y="323" font-size="29" font-weight="600" fill="#fff" text-anchor="start">PhyAI Gateway</text>
+<text x="60" y="360" font-size="22" font-weight="500" fill="#fff" text-anchor="start" data-box="52,334,468,32">Selects a healthy model server</text>
+<text x="60" y="392" font-size="20" font-weight="400" fill="#d8e7ff" text-anchor="start" data-box="52,367,468,33">Uses server-level in-flight counts</text>
+<rect x="36" y="466" width="496" height="281" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="60" y="501" font-size="26" font-weight="600" fill="#082b61" text-anchor="start">Host A</text>
+<text x="508" y="501" font-size="19" font-weight="500" fill="#555b54" text-anchor="end">2 GPUs</text>
+<rect x="36" y="789" width="496" height="281" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="60" y="824" font-size="26" font-weight="600" fill="#082b61" text-anchor="start">Host B</text>
+<text x="508" y="824" font-size="19" font-weight="500" fill="#555b54" text-anchor="end">2 GPUs</text>
+<path d="M284 409V428H14V843" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="56" y="451" font-size="19" font-weight="500" fill="#0756c9" text-anchor="start">Gateway routes among all 4 servers</text>
+<path d="M14 520H404" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M164 520V534" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M404 520V534" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M14 843H404" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M164 843V857" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<path d="M404 843V857" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="52" y="542" width="224" height="185" rx="12" fill="#fff" stroke="#c5d8f4"/>
+<text x="164" y="574" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="60,550,208,31">Model server A0</text>
+<rect x="64" y="591" width="200" height="40" rx="8" fill="#d9ed69"/>
+<text x="164" y="619" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="74,596,180,31">Engine</text>
+<path d="M164 631V643" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="64" y="650" width="200" height="64" rx="8" fill="#082b61"/>
+<text x="164" y="676" font-size="20" font-weight="600" fill="#fff" text-anchor="middle" data-box="74,654,180,28">GPU 0 · PI0.5</text>
+<text x="164" y="702" font-size="17" font-weight="400" fill="#d8e7ff" text-anchor="middle" data-box="74,682,180,29">Complete model</text>
+<rect x="292" y="542" width="224" height="185" rx="12" fill="#fff" stroke="#c5d8f4"/>
+<text x="404" y="574" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="300,550,208,31">Model server A1</text>
+<rect x="304" y="591" width="200" height="40" rx="8" fill="#d9ed69"/>
+<text x="404" y="619" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="314,596,180,31">Engine</text>
+<path d="M404 631V643" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="304" y="650" width="200" height="64" rx="8" fill="#082b61"/>
+<text x="404" y="676" font-size="20" font-weight="600" fill="#fff" text-anchor="middle" data-box="314,654,180,28">GPU 1 · PI0.5</text>
+<text x="404" y="702" font-size="17" font-weight="400" fill="#d8e7ff" text-anchor="middle" data-box="314,682,180,29">Complete model</text>
+<rect x="52" y="865" width="224" height="185" rx="12" fill="#fff" stroke="#c5d8f4"/>
+<text x="164" y="897" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="60,873,208,31">Model server B0</text>
+<rect x="64" y="914" width="200" height="40" rx="8" fill="#d9ed69"/>
+<text x="164" y="942" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="74,919,180,31">Engine</text>
+<path d="M164 954V966" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="64" y="973" width="200" height="64" rx="8" fill="#082b61"/>
+<text x="164" y="999" font-size="20" font-weight="600" fill="#fff" text-anchor="middle" data-box="74,977,180,28">GPU 0 · PI0.5</text>
+<text x="164" y="1025" font-size="17" font-weight="400" fill="#d8e7ff" text-anchor="middle" data-box="74,1005,180,29">Complete model</text>
+<rect x="292" y="865" width="224" height="185" rx="12" fill="#fff" stroke="#c5d8f4"/>
+<text x="404" y="897" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="300,873,208,31">Model server B1</text>
+<rect x="304" y="914" width="200" height="40" rx="8" fill="#d9ed69"/>
+<text x="404" y="942" font-size="21" font-weight="600" fill="#082b61" text-anchor="middle" data-box="314,919,180,31">Engine</text>
+<path d="M404 954V966" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="304" y="973" width="200" height="64" rx="8" fill="#082b61"/>
+<text x="404" y="999" font-size="20" font-weight="600" fill="#fff" text-anchor="middle" data-box="314,977,180,28">GPU 1 · PI0.5</text>
+<text x="404" y="1025" font-size="17" font-weight="400" fill="#d8e7ff" text-anchor="middle" data-box="314,1005,180,29">Complete model</text>
+<rect x="28" y="1091" width="504" height="44" rx="12" fill="#d9ed69"/>
+<text x="280" y="1121" font-size="23" font-weight="600" fill="#082b61" text-anchor="middle" data-box="36,1097,488,33">One model server per replica</text>
+<text x="280" y="1162" font-size="19" font-weight="400" fill="#555b54" text-anchor="middle">Each request goes to one full PI0.5 replica.</text>
+<text x="280" y="1188" font-size="17" font-weight="400" fill="#555b54" text-anchor="middle">Conceptual topology, not measured throughput.</text>
+</svg>

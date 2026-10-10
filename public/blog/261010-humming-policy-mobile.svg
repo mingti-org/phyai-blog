@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 1104" role="img" aria-labelledby="title desc">
+<title id="title">Selective quantization in PI0.5</title><desc id="desc">The W4A16 preset quantizes language and action-expert attention and MLP weights to INT4, while other layers keep configured precision. Humming executes the selected GEMMs.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7.5" refY="4.5" orient="auto"><path d="M1 1L7 4.5L1 8" fill="none" stroke="#0756c9" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="560" height="1104" rx="18" fill="#fff"/>
+<style>text {font-family: 'Helvetica Neue', Arial, sans-serif;} .mono {font-family: 'SFMono-Regular', Consolas, monospace;}</style>
+<text x="32" y="40" font-size="16" font-weight="700" fill="#0756c9" text-anchor="start" class="">HUMMING / PI0.5 W4A16</text>
+<text x="32" y="80" font-size="30" font-weight="600" fill="#191c19" text-anchor="start" class="">Choose the layers.</text>
+<text x="32" y="116" font-size="30" font-weight="600" fill="#191c19" text-anchor="start" class="">Choose their precision.</text>
+<rect x="32" y="150" width="496" height="108" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="56" y="192" font-size="25" font-weight="600" fill="#082b61" text-anchor="start" class="">Original checkpoint</text>
+<text x="56" y="230" font-size="21" font-weight="400" fill="#555b54" text-anchor="start" class="">Unquantized model weights</text>
+<path d="M280 258V294" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="32" y="302" width="496" height="122" rx="12" fill="#082b61" stroke="#082b61"/>
+<text x="56" y="345" font-size="27" font-weight="600" fill="white" text-anchor="start" class="">Kernel policy YAML</text>
+<text x="56" y="389" font-size="21" font-weight="400" fill="#d8e7ff" text-anchor="start" class="">Layer matching · precision · execution</text>
+<path d="M280 424V461" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="32" y="470" width="496" height="213" rx="12" fill="#edf3fc" stroke="#c5d8f4"/>
+<text x="56" y="511" font-size="24" font-weight="600" fill="#082b61" text-anchor="start" class="">Quantize selected projections</text>
+<text x="56" y="550" font-size="22" font-weight="400" fill="#555b54" text-anchor="start" class="">Language model + action expert</text>
+<text x="56" y="588" font-size="22" font-weight="400" fill="#555b54" text-anchor="start" class="">Attention / MLP weights: INT4</text>
+<text x="56" y="626" font-size="22" font-weight="400" fill="#555b54" text-anchor="start" class="">Group size: 128</text>
+<path d="M280 683V720" fill="none" stroke="#0756c9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<rect x="32" y="729" width="496" height="119" rx="12" fill="#d9ed69" stroke="#d9ed69"/>
+<text x="56" y="773" font-size="25" font-weight="600" fill="#082b61" text-anchor="start" class="">Humming W4A16 GEMM</text>
+<text x="56" y="815" font-size="21" font-weight="400" fill="#082b61" text-anchor="start" class="">BF16 / FP16 activations and outputs</text>
+<rect x="32" y="882" width="496" height="145" rx="12" fill="#f2f3f1" stroke="#c8ccc7"/>
+<text x="56" y="922" font-size="23" font-weight="600" fill="#191c19" text-anchor="start" class="">Other layers keep their precision</text>
+<text x="56" y="959" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Vision · embeddings · norms</text>
+<text x="56" y="991" font-size="20" font-weight="400" fill="#555b54" text-anchor="start" class="">Action / time heads · optional value head</text>
+<text x="32" y="1062" font-size="18" font-weight="400" fill="#555b54" text-anchor="start" class="">BF16 preset: NVIDIA SM80+; compatible weight shapes.</text>
+</svg>
